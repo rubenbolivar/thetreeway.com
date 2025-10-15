@@ -1,0 +1,226 @@
+{
+  "nav": {
+    "about": "About",
+    "services": "Services",
+    "portfolio": "Portfolio",
+    "contact": "Contact",
+    "switchLanguage": "Cambiar a Español"
+  },
+  "hero": {
+    "title": "We turn your ideas into working technologies",
+    "subtitle": "From concept to implementation. We develop complete digital solutions that propel your business to the next level.",
+    "cta": "Talk to us",
+    "ctaSecondary": "View our work"
+  },
+  "about": {
+    "title": "We are your strategic partners",
+    "subtitle": "We're not just developers. We're your strategic partners in digital transformation. We accompany every step of the process, from that first idea to the product working in the market.",
+    "valueProps": [
+      {
+        "title": "Complete Experience",
+        "description": "From ideation to deployment, we handle the entire development cycle."
+      },
+      {
+        "title": "Strategic Approach",
+        "description": "We don't just build, we think about the business impact of every technical decision."
+      },
+      {
+        "title": "Modern Technologies",
+        "description": "We use the latest technologies to ensure scalable and future-proof solutions."
+      }
+    ]
+  },
+  "services": {
+    "title": "Our Services",
+    "subtitle": "We offer complete solutions to take your idea from concept to reality",
+    "items": [
+      {
+        "title": "Idea Development",
+        "description": "We turn your concept into a viable strategic plan",
+        "features": ["Concept validation", "Market research", "MVP definition"],
+        "icon": "lightbulb"
+      },
+      {
+        "title": "UX/UI Design",
+        "description": "Digital experiences your users will love",
+        "features": ["User research", "Prototyping", "Usability testing"],
+        "icon": "palette"
+      },
+      {
+        "title": "Frontend Development",
+        "description": "Modern, fast and responsive interfaces",
+        "features": ["React/Vue/Angular", "Mobile Apps", "PWAs"],
+        "icon": "monitor"
+      },
+      {
+        "title": "Backend Development",
+        "description": "Robust and scalable architecture",
+        "features": ["REST/GraphQL APIs", "Cloud Architecture", "Databases"],
+        "icon": "server"
+      }
+    ]
+  },
+  "process": {
+    "title": "Our Process",
+    "subtitle": "A proven methodology that guarantees successful results",
+    "steps": [
+      {
+        "number": "01",
+        "title": "Discovery",
+        "description": "We understand your vision, goals, and constraints. We research the market and define project scope."
+      },
+      {
+        "number": "02",
+        "title": "Planning",
+        "description": "We create a detailed roadmap, define technical architecture, and establish clear milestones."
+      },
+      {
+        "number": "03",
+        "title": "Development",
+        "description": "We build your solution using agile methodologies, with frequent deliveries and constant feedback."
+      },
+      {
+        "number": "04",
+        "title": "Launch",
+        "description": "We deploy your product, perform exhaustive testing, and support you in go-to-market."
+      }
+    ]
+  },
+  "portfolio": {
+    "title": "Featured Projects",
+    "subtitle": "Success stories that demonstrate our experience",
+    "viewProject": "View project",
+    "projects": [
+      {
+        "title": "B2B E-commerce Platform",
+        "description": "Complete e-commerce system for wholesale distributors with real-time inventory management.",
+        "tech": ["React", "Node.js", "PostgreSQL", "AWS"],
+        "results": ["300% increase in online sales", "50% reduction in processing time", "15 countries presence"],
+        "image": "/images/ecommerce-project.jpg"
+      },
+      {
+        "title": "Investment Fintech App",
+        "description": "Mobile application for investment portfolio management with real-time analysis and predictive AI.",
+        "tech": ["React Native", "Python", "TensorFlow", "Firebase"],
+        "results": ["100K+ active users", "99.9% uptime", "500M+ transactions processed"],
+        "image": "/images/fintech-project.jpg"
+      },
+      {
+        "title": "Telemedicine Solution",
+        "description": "Comprehensive platform for remote medical consultations with IoT device integration and clinical history.",
+        "tech": ["Vue.js", "Django", "WebRTC", "MongoDB"],
+        "results": ["50K+ monthly consultations", "95% patient satisfaction", "20 medical specialties"],
+        "image": "/images/telemedicine-project.jpg"
+      }
+    ]
+  },
+  "technologies": {
+    "title": "Technologies We Master",
+    "subtitle": "We work with the best tools in the market",
+    "categories": [
+      {
+        "name": "Frontend",
+        "technologies": ["React", "Vue.js", "Angular", "Next.js", "TypeScript", "Tailwind CSS"]
+      },
+      {
+        "name": "Backend",
+        "technologies": ["Node.js", "Python", "Django", "FastAPI", "PostgreSQL", "MongoDB"]
+      },
+      {
+        "name": "Mobile",
+        "technologies": ["React Native", "Flutter", "Swift", "Kotlin", "Expo", "Firebase"]
+      },
+      {
+        "name": "Cloud & DevOps",
+        "technologies": ["AWS", "Google Cloud", "Docker", "Kubernetes", "CI/CD", "Terraform"]
+      }
+    ]
+  },
+  "testimonials": {
+    "title": "What our clients say",
+    "items": [
+      {
+        "text": "TheTreeWay completely transformed our digital presence. Their strategic approach and technical expertise allowed us to scale our online business 10x.",
+        "author": "María González",
+        "position": "CEO",
+        "company": "TechStart Solutions",
+        "avatar": "/images/testimonial-1.jpg"
+      },
+      {
+        "text": "The code quality and attention to detail are exceptional. They delivered our MVP on time and exceeded all expectations.",
+        "author": "Carlos Mendoza",
+        "position": "CTO",
+        "company": "InnovateLab",
+        "avatar": "/images/testimonial-2.jpg"
+      },
+      {
+        "text": "They didn't just develop our platform, they helped us validate the business model and optimize user experience. True strategic partners.",
+        "author": "Ana Rodríguez",
+        "position": "Founder",
+        "company": "HealthTech Pro",
+        "avatar": "/images/testimonial-3.jpg"
+      }
+    ]
+  },
+  "contact": {
+    "title": "Ready to transform your idea?",
+    "subtitle": "Let's talk about your project and how we can help make it a reality",
+    "form": {
+      "name": "Name",
+      "namePlaceholder": "Your full name",
+      "email": "Email",
+      "emailPlaceholder": "you@email.com",
+      "phone": "Phone",
+      "phonePlaceholder": "+1 (555) 123-4567",
+      "company": "Company (optional)",
+      "companyPlaceholder": "Your company name",
+      "project": "Describe your project",
+      "projectPlaceholder": "Tell us about your idea, goals, and what you need...",
+      "budget": "Estimated budget",
+      "timeline": "Project timeline",
+      "submit": "Send message",
+      "submitting": "Sending...",
+      "budgetOptions": [
+        "< $10,000",
+        "$10,000 - $25,000",
+        "$25,000 - $50,000",
+        "$50,000 - $100,000",
+        "$100,000+"
+      ],
+      "timelineOptions": [
+        "1-3 months",
+        "3-6 months",
+        "6-12 months",
+        "12+ months"
+      ]
+    },
+    "info": {
+      "title": "Contact information",
+      "email": "hello@thetreeway.com",
+      "phone": "+1 (555) 123-4567",
+      "address": "Mexico City, Mexico",
+      "hours": "Mon - Fri: 9:00 AM - 6:00 PM (UTC-6)"
+    },
+    "success": {
+      "title": "Message sent!",
+      "message": "Thank you for contacting us. We'll respond within the next 24 hours."
+    }
+  },
+  "footer": {
+    "description": "We turn ideas into working technologies. Your strategic partner in digital transformation.",
+    "quickLinks": "Quick links",
+    "services": "Services",
+    "social": "Follow us",
+    "rights": "© 2024 TheTreeWay. All rights reserved.",
+    "privacy": "Privacy policy",
+    "terms": "Terms of service"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "tryAgain": "Try again",
+    "learnMore": "Learn more",
+    "getStarted": "Get started",
+    "viewAll": "View all"
+  }
+}

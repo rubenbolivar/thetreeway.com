@@ -1,0 +1,226 @@
+{
+  "nav": {
+    "about": "Nosotros",
+    "services": "Servicios",
+    "portfolio": "Portafolio",
+    "contact": "Contacto",
+    "switchLanguage": "Switch to English"
+  },
+  "hero": {
+    "title": "Convertimos tus ideas en tecnologías que funcionan",
+    "subtitle": "Desde el concepto hasta la implementación. Desarrollamos soluciones digitales completas que impulsan tu negocio hacia el siguiente nivel.",
+    "cta": "Conversa con nosotros",
+    "ctaSecondary": "Ver nuestro trabajo"
+  },
+  "about": {
+    "title": "Somos tus socios estratégicos",
+    "subtitle": "No somos solo desarrolladores. Somos tus socios estratégicos en la transformación digital. Acompañamos cada paso del proceso, desde esa primera idea hasta el producto funcionando en el mercado.",
+    "valueProps": [
+      {
+        "title": "Experiencia Completa",
+        "description": "Desde la ideación hasta el despliegue, manejamos todo el ciclo de desarrollo."
+      },
+      {
+        "title": "Enfoque Estratégico",
+        "description": "No solo construimos, pensamos en el impacto de negocio de cada decisión técnica."
+      },
+      {
+        "title": "Tecnologías Modernas",
+        "description": "Utilizamos las últimas tecnologías para garantizar soluciones escalables y futuras."
+      }
+    ]
+  },
+  "services": {
+    "title": "Nuestros Servicios",
+    "subtitle": "Ofrecemos soluciones completas para llevar tu idea del concepto a la realidad",
+    "items": [
+      {
+        "title": "Desarrollo de Ideas",
+        "description": "Convertimos tu concepto en un plan estratégico viable",
+        "features": ["Validación de concepto", "Investigación de mercado", "Definición de MVP"],
+        "icon": "lightbulb"
+      },
+      {
+        "title": "Diseño UX/UI",
+        "description": "Experiencias digitales que tus usuarios amarán",
+        "features": ["Investigación de usuarios", "Prototipado", "Testing de usabilidad"],
+        "icon": "palette"
+      },
+      {
+        "title": "Frontend Development",
+        "description": "Interfaces modernas, rápidas y responsivas",
+        "features": ["React/Vue/Angular", "Aplicaciones móviles", "PWAs"],
+        "icon": "monitor"
+      },
+      {
+        "title": "Backend Development",
+        "description": "Arquitectura robusta y escalable",
+        "features": ["APIs REST/GraphQL", "Arquitectura en la nube", "Bases de datos"],
+        "icon": "server"
+      }
+    ]
+  },
+  "process": {
+    "title": "Nuestro Proceso",
+    "subtitle": "Una metodología probada que garantiza resultados exitosos",
+    "steps": [
+      {
+        "number": "01",
+        "title": "Descubrimiento",
+        "description": "Entendemos tu visión, objetivos y restricciones. Investigamos el mercado y definimos el alcance del proyecto."
+      },
+      {
+        "number": "02",
+        "title": "Planificación",
+        "description": "Creamos un roadmap detallado, definimos la arquitectura técnica y establecemos hitos claros."
+      },
+      {
+        "number": "03",
+        "title": "Desarrollo",
+        "description": "Construimos tu solución usando metodologías ágiles, con entregas frecuentes y feedback constante."
+      },
+      {
+        "number": "04",
+        "title": "Lanzamiento",
+        "description": "Desplegamos tu producto, realizamos pruebas exhaustivas y te apoyamos en el go-to-market."
+      }
+    ]
+  },
+  "portfolio": {
+    "title": "Proyectos Destacados",
+    "subtitle": "Casos de éxito que demuestran nuestra experiencia",
+    "viewProject": "Ver proyecto",
+    "projects": [
+      {
+        "title": "Plataforma E-commerce B2B",
+        "description": "Sistema completo de comercio electrónico para distribuidores mayoristas con gestión de inventario en tiempo real.",
+        "tech": ["React", "Node.js", "PostgreSQL", "AWS"],
+        "results": ["300% aumento en ventas online", "50% reducción en tiempo de procesamiento", "15 países de presencia"],
+        "image": "/images/ecommerce-project.jpg"
+      },
+      {
+        "title": "App Fintech para Inversiones",
+        "description": "Aplicación móvil para gestión de portafolios de inversión con análisis en tiempo real y AI predictiva.",
+        "tech": ["React Native", "Python", "TensorFlow", "Firebase"],
+        "results": ["100K+ usuarios activos", "99.9% uptime", "500M+ transacciones procesadas"],
+        "image": "/images/fintech-project.jpg"
+      },
+      {
+        "title": "Solución de Telemedicina",
+        "description": "Plataforma integral para consultas médicas remotas con integración de dispositivos IoT y historial clínico.",
+        "tech": ["Vue.js", "Django", "WebRTC", "MongoDB"],
+        "results": ["50K+ consultas mensuales", "95% satisfacción del paciente", "20 especialidades médicas"],
+        "image": "/images/telemedicine-project.jpg"
+      }
+    ]
+  },
+  "technologies": {
+    "title": "Tecnologías que Dominamos",
+    "subtitle": "Trabajamos con las mejores herramientas del mercado",
+    "categories": [
+      {
+        "name": "Frontend",
+        "technologies": ["React", "Vue.js", "Angular", "Next.js", "TypeScript", "Tailwind CSS"]
+      },
+      {
+        "name": "Backend",
+        "technologies": ["Node.js", "Python", "Django", "FastAPI", "PostgreSQL", "MongoDB"]
+      },
+      {
+        "name": "Mobile",
+        "technologies": ["React Native", "Flutter", "Swift", "Kotlin", "Expo", "Firebase"]
+      },
+      {
+        "name": "Cloud & DevOps",
+        "technologies": ["AWS", "Google Cloud", "Docker", "Kubernetes", "CI/CD", "Terraform"]
+      }
+    ]
+  },
+  "testimonials": {
+    "title": "Lo que dicen nuestros clientes",
+    "items": [
+      {
+        "text": "TheTreeWay transformó completamente nuestra presencia digital. Su enfoque estratégico y expertise técnico nos permitió escalar 10x nuestro negocio online.",
+        "author": "María González",
+        "position": "CEO",
+        "company": "TechStart Solutions",
+        "avatar": "/images/testimonial-1.jpg"
+      },
+      {
+        "text": "La calidad del código y la atención al detalle son excepcionales. Entregaron nuestro MVP en tiempo record y superando todas las expectativas.",
+        "author": "Carlos Mendoza",
+        "position": "CTO",
+        "company": "InnovateLab",
+        "avatar": "/images/testimonial-2.jpg"
+      },
+      {
+        "text": "No solo desarrollaron nuestra plataforma, nos ayudaron a validar el modelo de negocio y optimizar la experiencia del usuario. Verdaderos socios estratégicos.",
+        "author": "Ana Rodríguez",
+        "position": "Founder",
+        "company": "HealthTech Pro",
+        "avatar": "/images/testimonial-3.jpg"
+      }
+    ]
+  },
+  "contact": {
+    "title": "¿Listo para transformar tu idea?",
+    "subtitle": "Conversemos sobre tu proyecto y cómo podemos ayudarte a hacerlo realidad",
+    "form": {
+      "name": "Nombre",
+      "namePlaceholder": "Tu nombre completo",
+      "email": "Email",
+      "emailPlaceholder": "tu@email.com",
+      "phone": "Teléfono",
+      "phonePlaceholder": "+1 (555) 123-4567",
+      "company": "Empresa (opcional)",
+      "companyPlaceholder": "Nombre de tu empresa",
+      "project": "Describe tu proyecto",
+      "projectPlaceholder": "Cuéntanos sobre tu idea, objetivos y lo que necesitas...",
+      "budget": "Presupuesto estimado",
+      "timeline": "Timeline del proyecto",
+      "submit": "Enviar mensaje",
+      "submitting": "Enviando...",
+      "budgetOptions": [
+        "< $10,000",
+        "$10,000 - $25,000",
+        "$25,000 - $50,000",
+        "$50,000 - $100,000",
+        "$100,000+"
+      ],
+      "timelineOptions": [
+        "1-3 meses",
+        "3-6 meses",
+        "6-12 meses",
+        "12+ meses"
+      ]
+    },
+    "info": {
+      "title": "Información de contacto",
+      "email": "hola@thetreeway.com",
+      "phone": "+1 (555) 123-4567",
+      "address": "Ciudad de México, México",
+      "hours": "Lun - Vie: 9:00 AM - 6:00 PM (UTC-6)"
+    },
+    "success": {
+      "title": "¡Mensaje enviado!",
+      "message": "Gracias por contactarnos. Te responderemos en las próximas 24 horas."
+    }
+  },
+  "footer": {
+    "description": "Convertimos ideas en tecnologías que funcionan. Tu socio estratégico en transformación digital.",
+    "quickLinks": "Enlaces rápidos",
+    "services": "Servicios",
+    "social": "Síguenos",
+    "rights": "© 2024 TheTreeWay. Todos los derechos reservados.",
+    "privacy": "Política de privacidad",
+    "terms": "Términos de servicio"
+  },
+  "common": {
+    "loading": "Cargando...",
+    "error": "Ha ocurrido un error",
+    "tryAgain": "Intentar de nuevo",
+    "learnMore": "Conocer más",
+    "getStarted": "Comenzar",
+    "viewAll": "Ver todo"
+  }
+}
