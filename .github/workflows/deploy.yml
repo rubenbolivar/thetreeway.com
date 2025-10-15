@@ -1,0 +1,71 @@
+name: Deploy to VPS
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Build project
+      run: |
+        NODE_ENV=production npm run build
+      env:
+        CI: true
+
+    - name: Run tests (if available)
+      run: |
+        if [ -f "package.json" ] && grep -q "\"test\":" package.json; then
+          npm test -- --passWithNoTests
+        else
+          echo "No tests found, skipping..."
+        fi
+
+    - name: Create deployment package
+      run: |
+        tar -czf thetreeway-website-${{ github.sha }}.tar.gz -C out .
+
+    - name: Upload build artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: website-build-${{ github.sha }}
+        path: thetreeway-website-${{ github.sha }}.tar.gz
+        retention-days: 30
+
+    # Uncomment and configure the following steps for automatic VPS deployment
+    # - name: Deploy to VPS
+    #   if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
+    #   uses: appleboy/ssh-action@v1.0.0
+    #   with:
+    #     host: ${{ secrets.VPS_HOST }}
+    #     username: ${{ secrets.VPS_USERNAME }}
+    #     key: ${{ secrets.VPS_SSH_KEY }}
+    #     port: ${{ secrets.VPS_PORT }}
+    #     script: |
+    #       cd /path/to/deployment/
+    #       wget ${{ secrets.DEPLOYMENT_URL }}/thetreeway-website-${{ github.sha }}.tar.gz
+    #       tar -xzf thetreeway-website-${{ github.sha }}.tar.gz -C /var/www/thetreeway.com/
+    #       sudo systemctl reload nginx
+    #       rm thetreeway-website-${{ github.sha }}.tar.gz
+
+    - name: Lighthouse CI
+      if: github.event_name == 'pull_request'
+      uses: treosh/lighthouse-ci-action@v10
+      with:
+        temporaryPublicStorage: true
