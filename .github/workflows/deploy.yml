@@ -48,21 +48,64 @@ jobs:
         path: thetreeway-website-${{ github.sha }}.tar.gz
         retention-days: 30
 
-    # Uncomment and configure the following steps for automatic VPS deployment
-    # - name: Deploy to VPS
-    #   if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
-    #   uses: appleboy/ssh-action@v1.0.0
-    #   with:
-    #     host: ${{ secrets.VPS_HOST }}
-    #     username: ${{ secrets.VPS_USERNAME }}
-    #     key: ${{ secrets.VPS_SSH_KEY }}
-    #     port: ${{ secrets.VPS_PORT }}
-    #     script: |
-    #       cd /path/to/deployment/
-    #       wget ${{ secrets.DEPLOYMENT_URL }}/thetreeway-website-${{ github.sha }}.tar.gz
-    #       tar -xzf thetreeway-website-${{ github.sha }}.tar.gz -C /var/www/thetreeway.com/
-    #       sudo systemctl reload nginx
-    #       rm thetreeway-website-${{ github.sha }}.tar.gz
+    - name: Copy tarball to VPS via SCP
+      if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master')
+      uses: appleboy/scp-action@v0.1.7
+      with:
+        host: ${{ secrets.VPS_HOST }}
+        username: ${{ secrets.VPS_USERNAME }}
+        key: ${{ secrets.VPS_SSH_KEY }}
+        port: ${{ secrets.VPS_PORT }}
+        source: "thetreeway-website-${{ github.sha }}.tar.gz"
+        target: "/tmp/"
+
+    - name: Atomic deploy on VPS
+      if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master')
+      uses: appleboy/ssh-action@v1.0.3
+      with:
+        host: ${{ secrets.VPS_HOST }}
+        username: ${{ secrets.VPS_USERNAME }}
+        key: ${{ secrets.VPS_SSH_KEY }}
+        port: ${{ secrets.VPS_PORT }}
+        script: |
+          set -e
+          SHA="${{ github.sha }}"
+          TARBALL="/tmp/thetreeway-website-${SHA}.tar.gz"
+          WEB="/var/www/thetreeway.com"
+          NEW="/var/www/thetreeway.com.new"
+          OLD="/var/www/thetreeway.com.old"
+
+          # Cleanup leftovers from previous failed attempts
+          rm -rf "$NEW" "$OLD"
+
+          # Extract to new dir
+          mkdir -p "$NEW"
+          tar -xzf "$TARBALL" -C "$NEW"
+          chown -R www-data:www-data "$NEW"
+
+          # Atomic swap
+          mv "$WEB" "$OLD"
+          mv "$NEW" "$WEB"
+
+          # Smoke test against the live HTTPS endpoint via localhost
+          if curl -k -sf -o /dev/null --max-time 10 \
+               --resolve thetreeway.com:443:127.0.0.1 \
+               https://thetreeway.com/ \
+             && curl -k -sf -o /dev/null --max-time 10 \
+                  --resolve thetreeway.com:443:127.0.0.1 \
+                  https://thetreeway.com/rubenbolivar/; then
+            echo "Smoke test OK — keeping new deploy"
+            rm -rf "$OLD"
+            rm -f "$TARBALL"
+          else
+            echo "Smoke test FAILED — rolling back"
+            rm -rf "$WEB"
+            mv "$OLD" "$WEB"
+            rm -f "$TARBALL"
+            exit 1
+          fi
+
+          echo "Deploy of $SHA completed successfully"
 
     - name: Lighthouse CI
       if: github.event_name == 'pull_request'
