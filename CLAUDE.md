@@ -32,15 +32,23 @@ git pull             # Pull latest changes
 ```
 
 ### Deployment
-```bash
-# Build and deploy (use the provided deploy.sh script)
-cd thetreeway-website
-./deploy.sh          # Creates thetreeway-website.tar.gz for VPS upload
+Deployment is automated. Any push to `main` triggers the GitHub Actions
+workflow (`.github/workflows/deploy.yml`), which builds the static export
+and deploys it atomically to the VPS over SSH (with automatic rollback on
+smoke-test failure). No manual SSH/scp or credentials are needed for normal
+deploys.
 
-# Manual deployment via SSH (credentials in MAINTENANCE_MODE.md)
-npm run build
-sshpass -p 'PASSWORD' scp -o StrictHostKeyChecking=no -r out/* root@66.29.133.107:/var/www/thetreeway.com/
+```bash
+# Trigger a deploy: just push to main
+git push origin main
+
+# Force a redeploy without code changes
+git commit --allow-empty -m "redeploy" && git push origin main
 ```
+
+VPS access details and secrets are kept out of the repo (GitHub Actions
+secrets + the maintainer's local notes). Never commit credentials, IPs or
+SSH commands with passwords.
 
 ### Build Output
 - Static export configured (`output: 'export'` in next.config.ts)
@@ -73,8 +81,6 @@ A toggleable maintenance page that preserves the original site content:
 **Key files:**
 - `src/components/MaintenancePage.tsx` - Animated maintenance page with particle background
 - `src/components/ParticleBackground.tsx` - Canvas animation component
-- `MAINTENANCE_MODE.md` - Detailed documentation on maintenance mode
-- `MAINTENANCE_QUICK_GUIDE.md` - Quick reference guide
 
 **To toggle:**
 ```typescript
@@ -184,10 +190,11 @@ GitHub Actions workflow (`.github/workflows/deploy.yml`):
 
 ### When Deploying
 1. Always run `npm run build` locally first to check for errors
-2. Test the build in `out/` directory
-3. Use the deploy script or manual SCP command
-4. Server details in MAINTENANCE_MODE.md (sensitive info)
-5. Backups are stored on VPS at `/root/backups/`
+2. Optionally test the build in the `out/` directory
+3. Push to `main` — the GitHub Actions workflow builds and deploys
+   automatically with atomic swap + rollback
+4. Verify the run: `gh run list --repo rubenbolivar/thetreeway.com --limit 1`
+5. Backups are stored on the VPS under `/root/`
 
 ### TypeScript Configuration
 - Strict mode enabled
@@ -223,6 +230,7 @@ export const metadata = generateMetadata('es'); // or 'en'
 - No test suite configured (tests are skipped in CI)
 - Images must be in public/images/ directory
 - WhatsApp contact number: +584121010744
-- VPS IP: 66.29.133.107 (do not commit credentials)
+- Never commit credentials, server IPs, or SSH commands with passwords
 - Production URL: https://thetreeway.com
-- Other sites on same VPS: admin.rogers-green.us, queenr.net, rogers-green.us (do not modify)
+- Deployment is automated via GitHub Actions (see Deployment section)
+- Other sites share the same VPS — do not modify them from this repo
