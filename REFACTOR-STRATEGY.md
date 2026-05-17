@@ -8,7 +8,7 @@
 ## Estado de sprints (actualizar al cerrar cada uno)
 
 - [x] Sprint 0 — Auditoría y setup (CERRADO 2026-05-17, commit 4ace8cd)
-- [ ] Sprint 1 — Cimientos visibles
+- [x] Sprint 1 — Cimientos visibles (CERRADO 2026-05-17, commit 43fc7b8)
 - [ ] Sprint 2 — Secciones que cierran ventas (filter + model-diagram + casos)
 - [ ] Sprint 3 — Profundidad (how-we-work, author, tech-stack, insights-preview)
 - [ ] Sprint 4 — Páginas internas (MDX, casos, insights, enfoque, equipo)
