@@ -214,6 +214,24 @@ Producción DEBE ejecutar el server standalone con los estáticos copiados:
    Results Test sobre las URLs públicas (validación schema online que
    no se puede hacer en local).
 
+**CRÍTICO (hallazgos del ensayo en VPS, L3/L5 — bloqueaban producción):**
+El `server.js` standalone de Next **NO lee el `.env`** en runtime: solo
+ve `process.env`. El pipeline (y cualquier arranque PM2) DEBE cargar el
+`.env` al entorno antes de `pm2 start/reload --update-env`.
+- `PORT` sin inyectar → el server cae a **3000** (`EADDRINUSE`, crash-loop).
+- `RESEND_*`/`CAL_*` sin inyectar → el form da 500 ("not configured").
+- El `.env` NO se puede `source` (valores como
+  `RESEND_FROM=TheTreeWay <hola@…>` llevan `<>` y espacios): cargar
+  partiendo en el primer `=` y `export` literal.
+- **`HOSTNAME=127.0.0.1` rompe TODA ruta SSR/i18n.** El server standalone
+  ejecuta el middleware y luego se *auto-proxya* a `localhost:$PORT`; en
+  este VPS `localhost`→`::1` (IPv6, orden verbatim Node 18) → `connect
+  ECONNREFUSED ::1:3003` → 500/cuelgue en `/es`, `/casos`, etc.
+  `--dns-result-order=ipv4first` NO basta (el auto-proxy de Next no lo
+  respeta). Fix: **`HOSTNAME=::`** (dual-stack) — acepta `::1` y
+  `127.0.0.1`, así nginx → `127.0.0.1:$PORT` sigue funcionando.
+`deploy.yml` ya parcheado con estos cuatro fixes y validado en el ensayo.
+
 **Estado:** refactor (Sprints 0-6) COMPLETO en branch `refactor-2026`,
 pusheado, NO desplegado. `main` sigue en mantenimiento (static export +
 deploy.yml viejo). El lanzamiento es un paso deliberado aparte que

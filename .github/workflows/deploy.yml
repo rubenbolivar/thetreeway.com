@@ -80,10 +80,20 @@ jobs:
             tar -xzf "$TARBALL" -C "$NEW"
 
             # Runtime env (NOT committed; written from Actions secrets).
+            # NOTE: Next's standalone server.js does NOT read this .env at
+            # runtime — it only sees process.env. We load it explicitly
+            # below before pm2 so the PM2 child inherits these vars.
+            # HOSTNAME=:: (dual-stack): the standalone server runs
+            # middleware then self-proxies to localhost:$PORT; on this
+            # box localhost→::1 (IPv6), so binding only 127.0.0.1 makes
+            # every SSR/i18n route 500/hang (rehearsal finding). Binding
+            # :: accepts ::1 and 127.0.0.1, so nginx → 127.0.0.1:$PORT
+            # still works. NODE_OPTIONS ipv4first is belt-and-braces.
             cat > "$NEW/.env" <<ENVEOF
             NODE_ENV=production
             PORT=$PORT
-            HOSTNAME=127.0.0.1
+            HOSTNAME=::
+            NODE_OPTIONS=--dns-result-order=ipv4first
             RESEND_API_KEY=${{ secrets.RESEND_API_KEY }}
             RESEND_FROM=${{ secrets.RESEND_FROM }}
             RESEND_TO=${{ secrets.RESEND_TO }}
@@ -97,6 +107,17 @@ jobs:
             # Atomic swap
             [ -d "$APP" ] && mv "$APP" "$OLD"
             mv "$NEW" "$APP"
+
+            # Load .env into THIS shell so the PM2 child (and
+            # `pm2 reload --update-env`) inherit it. We can't `source`
+            # it: values like RESEND_FROM='TheTreeWay <a@b>' contain
+            # shell metachars. Split on the first '=', export literally.
+            set -a
+            while IFS='=' read -r k v; do
+              case "$k" in ''|\#*) continue;; esac
+              export "$k=$v"
+            done < "$APP/.env"
+            set +a
 
             # PM2: start or reload the standalone server (node server.js)
             cd "$APP"
