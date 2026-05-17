@@ -12,7 +12,7 @@
 - [x] Sprint 2 — Secciones que cierran ventas (CERRADO 2026-05-17, commit ce14af5)
 - [x] Sprint 3 — Profundidad (CERRADO 2026-05-17, commit ed837ad)
 - [x] Sprint 4 — Páginas internas (CERRADO 2026-05-17, commit dd290d7)
-- [ ] Sprint 5 — Conversión y SEO (contacto, API, OG, sitemap, JSON-LD, middleware)
+- [x] Sprint 5 — Conversión y SEO (CERRADO 2026-05-17, commit 7642c1c)
 - [ ] Sprint 6 — Calidad final (Lighthouse, a11y, schema, hreflang)
 
 ---
