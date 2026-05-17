@@ -6,7 +6,13 @@ import { social, calUrl } from "../../content/config/social";
 // "La firma tiene un autor." 220px photo (placeholder) · 1fr content.
 // Closing pull-quote in serif italic. Links from central social config.
 
-export async function AuthorSection() {
+export async function AuthorSection({
+  headingAs = "h2",
+}: {
+  // /equipo renders this as the page's sole H1 (a11y + SEO); on the
+  // home page it stays an H2 under the hero's H1.
+  headingAs?: "h1" | "h2";
+} = {}) {
   const t = await getTranslations("author");
 
   return (
@@ -15,7 +21,7 @@ export async function AuthorSection() {
       className="border-hairline border-x-0 border-b-0"
     >
       <div className="mx-auto max-w-5xl px-6 py-20 sm:py-28">
-        <SectionHeading title={t("title")} />
+        <SectionHeading title={t("title")} as={headingAs} />
 
         <div className="mt-12 grid gap-10 lg:grid-cols-[220px_1fr] lg:gap-14">
           {/* Photo placeholder (REFACTOR §5: professional photo TBD) */}

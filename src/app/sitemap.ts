@@ -12,6 +12,9 @@ const STATIC_PATHS = [
   "insights",
   "equipo",
   "contacto",
+  "privacidad",
+  "terminos",
+  "atribuciones",
 ];
 
 function url(locale: string, p = "") {

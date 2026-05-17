@@ -14,6 +14,7 @@
     "close": "Cerrar"
   },
   "hero": {
+    "metaTitle": "TheTreeWay — arquitectura digital para grupos empresariales",
     "eyebrow": "Firma boutique · Caracas · Nueva York",
     "title": "Arquitectura digital para empresas que no caben en un template.",
     "subtitle": "Diseñamos y operamos la transformación digital de grupos empresariales en Latinoamérica: del CRM unificado al data lake, del e-commerce al copiloto agéntico. Una sola arquitectura, una sola hoja de ruta, un solo responsable.",
@@ -159,6 +160,12 @@
     "sending": "Enviando…",
     "success": "Gracias. Le responderemos en breve.",
     "error": "No se pudo enviar. Inténtelo de nuevo o escriba a hola@thetreeway.com.",
-    "invalid": "Revise los campos marcados."
+    "invalid": "Revise los campos marcados.",
+    "errName": "Indique su nombre (al menos 2 caracteres).",
+    "errEmail": "Introduzca un email corporativo válido.",
+    "errOrg": "Indique el nombre de su organización.",
+    "errRole": "Indique su rol.",
+    "errStage": "Seleccione la etapa de su organización.",
+    "errMessage": "Cuéntenos brevemente su contexto (al menos 10 caracteres)."
   }
 }

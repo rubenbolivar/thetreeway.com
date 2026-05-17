@@ -1,26 +1,30 @@
 import type { Metadata } from 'next';
 import RubenBolivarCard from './RubenBolivarCard';
 
+const TITLE = 'Rubén Bolívar — Fundador y arquitecto principal · TheTreeWay';
+const DESCRIPTION =
+  'Rubén Bolívar, fundador y arquitecto principal de TheTreeWay: firma boutique de arquitectura digital e IA aplicada para grupos empresariales en Latinoamérica. Datos de contacto directos y agenda.';
+
 export const metadata: Metadata = {
-  title: 'Ruben Bolivar - Software Developer | TheTreeWay',
-  description:
-    'Contacto profesional de Ruben Bolivar. Full-stack developer especializado en desarrollo web y aplicaciones móviles.',
-  authors: [{ name: 'Ruben Bolivar' }],
+  title: TITLE,
+  description: DESCRIPTION,
+  authors: [{ name: 'Rubén Bolívar' }],
   keywords: [
-    'Ruben Bolivar',
-    'Software Developer',
-    'Full-stack',
-    'Web Developer',
-    'Mobile Apps',
+    'Rubén Bolívar',
     'TheTreeWay',
+    'arquitectura digital',
+    'IA aplicada',
+    'transformación digital',
+    'grupos empresariales',
+    'LatAm',
   ],
-  creator: 'Ruben Bolivar',
+  creator: 'Rubén Bolívar',
   robots: { index: true, follow: true },
+  alternates: { canonical: 'https://thetreeway.com/rubenbolivar' },
   openGraph: {
-    title: 'Ruben Bolivar - Software Developer',
-    description:
-      'Contacto profesional de Ruben Bolivar. Full-stack developer especializado en desarrollo web y aplicaciones móviles.',
-    url: 'https://thetreeway.com/rubenbolivar/',
+    title: TITLE,
+    description: DESCRIPTION,
+    url: 'https://thetreeway.com/rubenbolivar',
     siteName: 'TheTreeWay',
     locale: 'es_ES',
     type: 'profile',
@@ -28,8 +32,8 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     creator: '@RubenBolivar',
-    title: 'Ruben Bolivar - Software Developer',
-    description: 'Contacto profesional de Ruben Bolivar',
+    title: TITLE,
+    description: DESCRIPTION,
   },
   icons: {
     icon: [{ url: '/favicon.ico', type: 'image/x-icon', sizes: '16x16' }],

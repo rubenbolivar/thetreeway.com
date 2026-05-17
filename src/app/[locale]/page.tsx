@@ -21,7 +21,7 @@ export async function generateMetadata({
   return buildMetadata({
     locale,
     path: "",
-    title: "TheTreeWay — arquitectura digital para grupos empresariales",
+    title: t("metaTitle"),
     description: t("subtitle"),
   });
 }

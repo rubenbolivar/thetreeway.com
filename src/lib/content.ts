@@ -7,7 +7,7 @@ import matter from "gray-matter";
 
 const ROOT = path.join(process.cwd(), "src", "content");
 
-export type ContentType = "cases" | "insights";
+export type ContentType = "cases" | "insights" | "legal";
 
 export interface ContentMeta {
   slug: string;

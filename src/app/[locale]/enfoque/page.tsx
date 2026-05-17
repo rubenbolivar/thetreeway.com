@@ -36,7 +36,7 @@ export default async function EnfoquePage({
   setRequestLocale(locale);
   return (
     <>
-      <FilterSection />
+      <FilterSection headingAs="h1" />
       <ModelDiagram />
       <HowWeWork />
     </>

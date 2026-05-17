@@ -41,7 +41,7 @@ export default async function EquipoPage({
   return (
     <>
       <JsonLd data={personSchema(t("role"), t("bio1"))} />
-      <AuthorSection />
+      <AuthorSection headingAs="h1" />
       <section className="mx-auto max-w-5xl px-6 pb-24">
         <ul className="flex flex-wrap gap-x-6 gap-y-2">
           {socialList.map((s) => (

@@ -61,9 +61,12 @@ export function Nav() {
         </button>
       </nav>
 
-      {/* Mobile panel */}
+      {/* Mobile panel. `inert` when collapsed so its links/controls
+          can't receive keyboard focus even if a future style keeps it
+          rendered (WCAG 2.4.3 / 2.4.11 — REFACTOR audit F1). */}
       <div
         id="mobile-menu"
+        inert={!open}
         className={cn(
           "border-hairline border-x-0 border-b-0 md:hidden",
           open ? "block" : "hidden",
