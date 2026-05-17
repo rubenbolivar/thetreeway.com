@@ -179,15 +179,46 @@ NEXT_PUBLIC_PLAUSIBLE_DOMAIN=thetreeway.com
 Actual: `.github/workflows/deploy.yml` hace `next build` (static export) →
 sube `out/` a `/var/www/thetreeway.com/` → nginx sirve estático.
 
-Objetivo (patrón theblacklion.fit):
-1. `npm ci && npm run build` (genera `.next/standalone`).
-2. Empaquetar y `scp` al VPS; extraer en `/var/www/thetreeway.com/` (o
-   `/opt/thetreeway`).
-3. `pm2 reload` de un proceso `thetreeway` en un **puerto propio libre**
-   (3000=restaurant-scraper, 3002=black-lion-empire → usar p.ej. **3003**).
-4. nginx: cambiar el `server` de `thetreeway.com` de `root` estático a
+Objetivo (patrón theblacklion.fit). **CRÍTICO (hallazgo Sprint 6):**
+`output: 'standalone'` + `next start` NO sirve `/_next/static` (da 400).
+Producción DEBE ejecutar el server standalone con los estáticos copiados:
+
+1. `npm ci && npm run build` (genera `.next/standalone/`).
+2. Preparar el bundle de runtime:
+   ```
+   cp -r .next/static  .next/standalone/.next/static
+   cp -r public         .next/standalone/public
+   ```
+   (sin esto, CSS/JS dan 400 — confirmado en Sprint 6).
+3. Empaquetar `.next/standalone/` + `scp` al VPS (p.ej. `/opt/thetreeway`).
+4. `pm2 reload` ejecutando **`node server.js`** desde el dir standalone
+   (NO `next start`), en un **puerto propio libre** — 3000=restaurant-
+   scraper, 3002=black-lion-empire → usar **3003**. Env vars del proceso:
+   `RESEND_API_KEY` (rotada), `RESEND_FROM`, `RESEND_TO`,
+   `NEXT_PUBLIC_SITE_URL=https://thetreeway.com`, `CAL_COM_*`,
+   `NEXT_PUBLIC_PLAUSIBLE_DOMAIN`. NUNCA commitear la key (secret del
+   pipeline / ecosystem.config fuera de git).
+5. nginx: cambiar el `server` de `thetreeway.com` de `root` estático a
    `proxy_pass http://127.0.0.1:3003` (como rest-data / theblacklion).
-5. Smoke test con rollback atómico (mismo esquema que el deploy actual).
+   `/rubenbolivar` debe seguir resolviendo (ahora lo sirve el Node app,
+   no nginx estático — verificar en el smoke).
+6. Quitar el modo mantenimiento = simplemente desplegar este build
+   (el nuevo sitio ya NO tiene MAINTENANCE_MODE; al hacer el switch de
+   nginx a proxy, producción pasa del mantenimiento estático al sitio
+   nuevo en un solo movimiento).
+7. Smoke test con rollback atómico: si `curl https://thetreeway.com/es`
+   o `/rubenbolivar/` fallan, revertir el `server` nginx al `root`
+   estático anterior (mantener el `/var/www/thetreeway.com` viejo como
+   `.old` hasta validar).
+8. Lighthouse de campo post-deploy con la URL real + Google Rich
+   Results Test sobre las URLs públicas (validación schema online que
+   no se puede hacer en local).
+
+**Estado:** refactor (Sprints 0-6) COMPLETO en branch `refactor-2026`,
+pusheado, NO desplegado. `main` sigue en mantenimiento (static export +
+deploy.yml viejo). El lanzamiento es un paso deliberado aparte que
+toca producción y requiere coordinación con Rubén (cambiar deploy.yml,
+merge refactor-2026→main, switch nginx, rotar RESEND key).
 
 **No se toca producción hasta el lanzamiento.** `main` sigue en modo
 mantenimiento (static). El branch `refactor-2026` no se despliega
