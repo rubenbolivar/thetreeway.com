@@ -2,10 +2,35 @@
 title: "Reconciliation middleware between two operating realities."
 label: "Cross-border sustainable-services operation · NYC ↔ LatAm"
 status: "In operation · Since 2025"
-stack: "Python, REST APIs, n8n, Claude · parsing"
+stack: "Node.js, PostgreSQL, Google Places API, n8n, Claude · parsing"
 order: 3
 date: "2025-01-01"
 summary: "Cross-border billing reconciliation without direct access to the client's database."
 ---
 
-A used cooking-oil collection operation in New York with hundreds of clients across restaurant chains needed to reconcile billing against the client's enterprise system without direct database access. We designed the reconciliation middleware, collections automation and the cross-border operating architecture.
+A used-cooking-oil collection operation in New York, with hundreds of restaurant-chain clients, needed to reconcile its billing against the end client's enterprise system without having direct access to that database. The operations team was in LatAm; the operation, in NYC.
+
+## The challenge
+
+Two realities that don't talk to each other: a closed enterprise system on the client side and a field operation that bills per service rendered. Without database access, "reconciling" meant manually comparing listings that never quite matched, across time zones, with a team thousands of kilometers from the ground.
+
+## Architecture applied
+
+The problem wasn't building an ERP: it was building the **middleware** that reconciles both worlds without touching the client's system.
+
+- **An owned capture and zone-management system** on Node.js and PostgreSQL (native SQL, no ORM): a live inventory of prospective clients by geographic zone, fed by the Google Places API.
+- **Anti-duplication** by a stable identifier and a complete **audit trail** of every change: reconciliation needs each record to have a single identity and a history.
+- **Collection automation with n8n** and **Claude-assisted parsing** to normalize the client's listings —in inconsistent formats— into a comparable structure.
+- Deployed on owned infrastructure with PM2, Nginx, and SSL: a piece that runs on its own and is monitored, not a script someone runs by hand.
+
+## Model layers activated
+
+Data capture · CRM with golden record (single identity for each service point) · a strip of the agentic layer scoped to parsing and normalization.
+
+## Results
+
+In operation since 2025. The value wasn't a pretty dashboard: billing stopped depending on a fragile manual reconciliation and became a process that runs, leaves a trail, and can be audited — despite having no access to the system on the other side.
+
+## Lessons
+
+When you don't control one of the two ends, the right architecture isn't to integrate: it's to reconcile. Assuming access to the client's database would have been more comfortable to design and entirely unreal. The middleware was designed for the world as it is, not as it would be convenient for it to be.

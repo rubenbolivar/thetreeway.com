@@ -2,10 +2,35 @@
 title: "Unified digital architecture for five operating verticals."
 label: "Multi-brand enterprise group · Venezuela"
 status: "In operation · Since 2025"
-stack: "AWS, Power BI, Odoo, n8n, Agentic layer · Claude"
+stack: "PostgreSQL, Next.js, FastAPI, n8n, BI, Agentic layer · Claude"
 order: 1
 date: "2025-01-01"
 summary: "Six-layer model for a conglomerate with five siloed verticals."
 ---
 
-A conglomerate with divisions in automotive, motorcycles, agricultural machinery, solar energy and construction equipment operated with five siloed data ecosystems and twelve different software vendors. We designed and implemented the six-layer model, starting with the customer golden record and the biweekly operating executive committee.
+A conglomerate with divisions in automotive, motorcycles, agricultural machinery, solar energy, and construction equipment ran on five siloed data ecosystems and more than a dozen distinct software vendors. Each vertical had grown with its own website, its own catalog, and its own spreadsheet.
+
+## The challenge
+
+This wasn't a "we need a system" problem. It was that each vertical had its own truth: the same customer appeared three times, with three histories and no owner. Leadership couldn't answer basic questions —what a customer is worth to the group, which vertical pulls another— because there was no single place to ask.
+
+## Architecture applied
+
+We applied the six-layer model in the order the organization could absorb, not the order that was technically flashiest:
+
+- **We started with the golden record**, not with AI. A single customer across the five verticals before building anything on top.
+- Each vertical kept its frontend and catalog —some on Next.js, some on lighter stacks— but stopped being the source of truth: they began feeding a shared repository.
+- A **corporate data lake** as the single historical record, with executive dashboards on top of it.
+- An **agentic layer** scoped to real processes (not demos): copilots over the already-consolidated stack.
+
+## Model layers activated
+
+Data capture · CRM with golden record · Corporate data lake · Business intelligence · Agentic layer. The contact-center and digital-commerce layer was planned as a following phase: a layer is never forced before the foundation can hold it.
+
+## Results
+
+It has been in operation since 2025. The measurable change wasn't a marketing number: leadership went from five reports that didn't reconcile to governing the group from a fortnightly operating executive committee with a single reading of reality.
+
+## Lessons
+
+Order matters more than the tool. Attempting the agentic layer on five contradictory truths would have produced an AI confidently wrong. The golden record is not the glamorous part of the project; it's the part that makes everything else true.

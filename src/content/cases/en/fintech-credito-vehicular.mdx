@@ -2,10 +2,37 @@
 title: "An owned digital product in a market with fragile infrastructure."
 label: "Consumer-credit fintech platform · Emerging market"
 status: "Owned product · Active"
-stack: "Next.js, Python, PostgreSQL, Bank integration"
+stack: "Django, DRF, PostgreSQL, JWT, Nginx · Gunicorn"
 order: 2
 date: "2024-06-01"
 summary: "Vehicle-credit platform in a market with limited banking infrastructure."
 ---
 
-We designed and built a credit platform for vehicle financing in a market with banking-infrastructure limitations, high informality and complex currency dynamics. Integration with a partner bank, alternative scoring, dealership panel and a complete mobile experience.
+We designed and built a credit platform for financing vehicles, motorcycles, trucks, and agricultural machinery in a market with limited banking infrastructure, high informality, and complex currency dynamics.
+
+## The challenge
+
+Consumer credit in this market doesn't fail for lack of demand — it fails for lack of infrastructure: traditional credit scoring is non-existent for much of the public, banks are barely integrable, and the customer decides on the monthly payment, not the rate. A generic e-commerce platform solves none of this.
+
+## Architecture applied
+
+We didn't adapt an existing product: we built one of our own on a sober, maintainable base.
+
+- **Backend on Django + Django REST Framework**, PostgreSQL, and JWT auth — a core a small team can operate without depending on a vendor.
+- **Two financing modalities** modeled as business rules, not code branches: programmed purchase with award and award credit, including a plan specific to the agricultural segment.
+- **Financing calculator** with an amortization table and a saveable simulation: the customer understands the commitment before requesting it.
+- **An on-time-payment points system** as behavioral alternative scoring, given the absence of a traditional bureau.
+- **Admin panel** for payment validation, plan configuration, and request tracking with visual states.
+- Deployed on owned infrastructure (Nginx, Gunicorn, SSL) and direct contact via WhatsApp, where the customer is.
+
+## Model layers activated
+
+Data capture · CRM with golden record · Contact center and digital commerce. The platform is, in itself, the model's first layers applied to an owned financial product.
+
+## Results
+
+It's an owned product, active. The key architectural decision —behavioral scoring instead of waiting for a bureau infrastructure that never arrives— is what makes it viable to extend credit in this market without pricing the risk away.
+
+## Lessons
+
+In fragile markets the constraint isn't the frontend: it's the risk model. Building the calculator and the request flow was the fast part; designing scoring that works without the data a mature market takes for granted was the real architectural work.

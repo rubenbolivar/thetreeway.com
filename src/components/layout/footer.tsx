@@ -3,6 +3,7 @@ import { Link } from "../../i18n/navigation";
 
 const NAV_ITEMS = [
   { key: "approach", href: "/enfoque" },
+  { key: "model", href: "/modelo" },
   { key: "cases", href: "/casos" },
   { key: "insights", href: "/insights" },
   { key: "team", href: "/equipo" },

@@ -2,10 +2,35 @@
 title: "Middleware de reconciliación entre dos realidades operativas."
 label: "Operación cross-border servicios sostenibles · NYC ↔ LatAm"
 status: "En operación · Desde 2025"
-stack: "Python, APIs REST, n8n, Claude · parsing"
+stack: "Node.js, PostgreSQL, Google Places API, n8n, Claude · parsing"
 order: 3
 date: "2025-01-01"
 summary: "Reconciliación de facturación cross-border sin acceso directo a la base de datos del cliente."
 ---
 
-Una operación de recolección de aceite usado de cocina en Nueva York con cientos de clientes en cadenas de restaurantes necesitaba reconciliar facturación contra el sistema enterprise del cliente sin acceso directo a la base de datos. Diseñamos el middleware de reconciliación, automatización de cobranza y la arquitectura operativa cross-border.
+Una operación de recolección de aceite usado de cocina en Nueva York, con cientos de clientes en cadenas de restaurantes, necesitaba reconciliar su facturación contra el sistema enterprise del cliente final sin tener acceso directo a esa base de datos. El equipo operativo estaba en LatAm; la operación, en NYC.
+
+## El reto
+
+Dos realidades que no se hablan: un sistema enterprise cerrado del lado del cliente y una operación de campo que factura por servicio prestado. Sin acceso a la base de datos, "reconciliar" significaba comparar manualmente listados que nunca coincidían del todo, en zonas horarias distintas y con un equipo a miles de kilómetros del terreno.
+
+## Arquitectura aplicada
+
+El problema no era construir un ERP: era construir el **middleware** que reconcilia ambos mundos sin tocar el sistema del cliente.
+
+- **Sistema propio de captura y gestión de zonas** sobre Node.js y PostgreSQL (SQL nativo, sin ORM): inventario vivo de clientes potenciales por zona geográfica, alimentado con Google Places API.
+- **Anti-duplicados** por identificador estable y **traza de auditoría** completa de cada modificación: la reconciliación necesita que cada registro tenga una sola identidad y un historial.
+- **Automatización de cobranza con n8n** y **parsing asistido con Claude** para normalizar los listados del cliente —en formatos inconsistentes— a una estructura comparable.
+- Operación desplegada en infraestructura propia con PM2, Nginx y SSL: una pieza que corre sola y se monitorea, no un script que alguien ejecuta a mano.
+
+## Capas del modelo activadas
+
+Captura de datos · CRM con golden record (identidad única de cada punto de servicio) · una franja de la capa agéntica acotada al parsing y la normalización.
+
+## Resultados
+
+En operación desde 2025. El valor no fue un dashboard bonito: fue que la facturación dejó de depender de una conciliación manual frágil y pasó a ser un proceso que corre, deja traza y se puede auditar — a pesar de no tener acceso al sistema del otro lado.
+
+## Aprendizajes
+
+Cuando no controlas una de las dos puntas, la arquitectura correcta no es integrar: es reconciliar. Asumir acceso a la base de datos del cliente habría sido más cómodo de diseñar y completamente irreal. El middleware se diseñó para el mundo como es, no como convendría que fuera.

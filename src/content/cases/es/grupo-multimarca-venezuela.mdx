@@ -2,10 +2,35 @@
 title: "Arquitectura digital unificada para cinco verticales operativas."
 label: "Grupo empresarial multimarca · Venezuela"
 status: "En operación · Desde 2025"
-stack: "AWS, Power BI, Odoo, n8n, Capa agéntica · Claude"
+stack: "PostgreSQL, Next.js, FastAPI, n8n, BI, Capa agéntica · Claude"
 order: 1
 date: "2025-01-01"
 summary: "Modelo de seis capas para un conglomerado con cinco verticales en silos."
 ---
 
-Un conglomerado con divisiones en automoción, motocicletas, maquinaria agrícola, energía solar y equipos de construcción operaba con cinco ecosistemas de datos en silos y doce proveedores de software distintos. Diseñamos e implementamos el modelo de seis capas, empezando por el golden record del cliente y el comité ejecutivo operativo quincenal.
+Un conglomerado con divisiones en automoción, motocicletas, maquinaria agrícola, energía solar y equipos de construcción operaba con cinco ecosistemas de datos en silos y más de una decena de proveedores de software distintos. Cada vertical había crecido con su propia web, su propio catálogo y su propia hoja de cálculo.
+
+## El reto
+
+No era un problema de "hace falta un sistema". Era que cada vertical tenía verdad propia: el mismo cliente aparecía tres veces, con tres historiales y ningún dueño. La dirección no podía responder preguntas básicas —cuánto vale un cliente para el grupo, qué vertical arrastra a otra— porque no existía una sola fuente donde preguntarlo.
+
+## Arquitectura aplicada
+
+Aplicamos el modelo de seis capas en el orden que la organización podía absorber, no en el que era técnicamente más vistoso:
+
+- **Empezamos por el golden record**, no por la IA. Un cliente único transversal a las cinco verticales antes de construir nada encima.
+- Cada vertical conservó su frontend y su catálogo —algunos sobre Next.js, otros sobre stacks ligeros— pero dejaron de ser la fuente de verdad: pasaron a alimentar un repositorio común.
+- Un **data lake corporativo** como histórico único, y sobre él los tableros ejecutivos.
+- Una **capa agéntica** acotada a procesos reales (no demos): copilotos sobre el stack ya consolidado.
+
+## Capas del modelo activadas
+
+Captura de datos · CRM con golden record · Data lake corporativo · Business intelligence · Capa agéntica. La capa de contact center y comercial digital quedó planificada como fase siguiente: no se fuerza una capa antes de que la base la sostenga.
+
+## Resultados
+
+Está en operación desde 2025. El cambio medible no fue un número de marketing: fue que la dirección pasó a gobernar el grupo desde un comité ejecutivo operativo quincenal con una sola lectura de la realidad, en lugar de cinco reportes que no cuadraban entre sí.
+
+## Aprendizajes
+
+El orden importa más que la herramienta. Intentar la capa agéntica sobre cinco verdades contradictorias habría producido una IA segura de datos equivocados. El golden record no es la parte glamorosa del proyecto; es la que hace que todo lo demás sea cierto.

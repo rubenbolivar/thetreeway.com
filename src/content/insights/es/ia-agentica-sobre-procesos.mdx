@@ -1,0 +1,28 @@
+---
+title: "IA agéntica sobre procesos reales, no sobre demos"
+summary: "La diferencia entre un copiloto que opera el negocio y uno que impresiona en una reunión."
+date: "2026-04-28"
+order: 2
+---
+
+Hay dos formas de poner IA en una empresa. Una se demuestra en quince minutos y nunca entra en producción. La otra es invisible en una demo y sostiene una operación todos los días. La sexta capa del modelo es deliberadamente la segunda.
+
+## La trampa de la demo
+
+Un copiloto que responde preguntas genéricas sobre datos de ejemplo siempre impresiona. El problema aparece cuando se le pide operar sobre el proceso real: nombres que no normalizan, formatos que cambian, excepciones que el negocio conoce y el modelo no, integraciones que fallan a las 2 a.m. sin nadie mirando.
+
+La demo optimiza para el aplauso. La operación optimiza para el lunes por la mañana. No son el mismo producto.
+
+## Qué hace agéntica a una capa
+
+Una capa agéntica seria no es un chat encima de los datos. Es un conjunto de agentes acotados a procesos concretos del negocio, con tres condiciones:
+
+- **Alcance estrecho.** Un agente que hace una cosa bien, no uno que promete todo.
+- **Sobre una base consolidada.** Opera sobre el golden record y el data lake, no sobre silos. La capa seis sin las capas dos y cuatro es teatro.
+- **Con traza.** Cada acción del agente deja registro auditable. Si no se puede revisar lo que hizo, no está en producción: está en un experimento.
+
+## El criterio antes que el modelo
+
+La pregunta correcta no es "¿qué modelo usamos?". Es "¿qué proceso, hoy manual y frágil, mejora de verdad si un agente lo asiste?". El parsing de listados inconsistentes. La normalización de un cliente que aparece de tres formas. La cobranza que depende de que alguien se acuerde.
+
+Esos no son casos de uso glamorosos. Son los que devuelven horas reales y reducen errores reales. La IA aplicada no es la que mejor se cuenta; es la que mejor aguanta el lunes.

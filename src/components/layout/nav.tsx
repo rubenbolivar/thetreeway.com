@@ -8,6 +8,7 @@ import { cn } from "../../lib/utils";
 
 const ITEMS = [
   { key: "approach", href: "/enfoque" },
+  { key: "model", href: "/modelo" },
   { key: "cases", href: "/casos" },
   { key: "insights", href: "/insights" },
   { key: "team", href: "/equipo" },

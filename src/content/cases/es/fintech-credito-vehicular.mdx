@@ -2,10 +2,37 @@
 title: "Producto digital propio en un mercado de infraestructura frágil."
 label: "Plataforma fintech de crédito al consumo · Mercado emergente"
 status: "Producto propio · Activo"
-stack: "Next.js, Python, PostgreSQL, Integración bancaria"
+stack: "Django, DRF, PostgreSQL, JWT, Nginx · Gunicorn"
 order: 2
 date: "2024-06-01"
 summary: "Plataforma de crédito vehicular en un mercado de infraestructura bancaria limitada."
 ---
 
-Diseñamos y construimos una plataforma de crédito para financiamiento de vehículos en un mercado con limitaciones de infraestructura bancaria, alta informalidad y dinámicas cambiarias complejas. Integración con banco aliado, scoring alternativo, panel de concesionarios y experiencia móvil completa.
+Diseñamos y construimos una plataforma de crédito para el financiamiento de vehículos, motocicletas, camiones y maquinaria agrícola en un mercado con infraestructura bancaria limitada, alta informalidad y dinámicas cambiarias complejas.
+
+## El reto
+
+El crédito al consumo en este mercado no falla por falta de demanda, sino por falta de infraestructura: scoring crediticio tradicional inexistente para buena parte del público, banca poco integrable y un cliente que decide por la cuota mensual, no por la tasa. Una plataforma genérica de e-commerce no resuelve nada de esto.
+
+## Arquitectura aplicada
+
+No adaptamos un producto existente: construimos uno propio sobre una base sobria y mantenible.
+
+- **Backend en Django + Django REST Framework**, PostgreSQL y autenticación JWT — un núcleo que un equipo pequeño puede operar sin depender de un proveedor.
+- **Dos modalidades de financiamiento** modeladas como reglas de negocio, no como ramas de código: compra programada con adjudicación y crédito de adjudicación, incluyendo un plan específico para el segmento agrícola.
+- **Calculadora de financiamiento** con tabla de amortización y simulación guardable: el cliente entiende su compromiso antes de solicitarlo.
+- **Sistema de puntos por puntualidad** como scoring alternativo de comportamiento, ante la ausencia de buró tradicional.
+- **Panel administrativo** para validación de pagos, configuración de planes y seguimiento de solicitudes con estados visuales.
+- Despliegue en infraestructura propia (Nginx, Gunicorn, SSL) y contacto directo vía WhatsApp, donde está el cliente.
+
+## Capas del modelo activadas
+
+Captura de datos · CRM con golden record · Contact center y comercial digital. La plataforma es, en sí misma, las primeras capas del modelo aplicadas a un producto financiero propio.
+
+## Resultados
+
+Es un producto propio, activo. La decisión arquitectónica clave —scoring por comportamiento en vez de esperar a una infraestructura de buró que no llega— es lo que hace viable dar crédito en este mercado sin trasladar el riesgo al precio.
+
+## Aprendizajes
+
+En mercados frágiles, la restricción no es el frontend: es el modelo de riesgo. Construir la calculadora y el flujo de solicitud fue lo rápido; diseñar un scoring que funcione sin los datos que un mercado maduro da por sentados fue el verdadero trabajo de arquitectura.

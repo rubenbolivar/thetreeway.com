@@ -24,14 +24,20 @@ export async function AuthorSection({
         <SectionHeading title={t("title")} as={headingAs} />
 
         <div className="mt-12 grid gap-10 lg:grid-cols-[220px_1fr] lg:gap-14">
-          {/* Photo placeholder (REFACTOR §5: professional photo TBD) */}
+          {/* Editorial monogram. Intentional placeholder until a
+              professional B/W portrait lands (REFACTOR §5) — reads as a
+              designed mark, not a missing image. */}
           <div
-            className="border-hairline flex aspect-[3/4] w-full max-w-[220px] items-center justify-center"
+            className="border-hairline flex aspect-[3/4] w-full max-w-[220px] flex-col items-center justify-center gap-4 px-4"
             role="img"
             aria-label={t("photoAlt")}
           >
-            <span className="font-display text-3xl font-medium text-subtle">
+            <span className="font-display text-5xl font-medium tracking-[-0.02em] text-foreground">
               RB
+            </span>
+            <span className="h-px w-8 bg-border" aria-hidden />
+            <span className="text-center font-mono text-[10px] uppercase leading-relaxed tracking-[0.12em] text-subtle">
+              {t("name")}
             </span>
           </div>
 

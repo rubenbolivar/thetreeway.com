@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { setRequestLocale } from "next-intl/server";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { routing } from "../../../../i18n/routing";
-import { getDoc, getStaticPairs } from "../../../../lib/content";
+import { getAll, getDoc, getStaticPairs } from "../../../../lib/content";
 import { Tag } from "../../../../components/ui/tag";
 import { Link } from "../../../../i18n/navigation";
 import { JsonLd } from "../../../../components/seo/json-ld";
@@ -46,6 +46,11 @@ export default async function CasePage({
     .map((s) => s.trim())
     .filter(Boolean);
 
+  // Next case (wraps around) for end-of-article navigation.
+  const all = getAll("cases", locale);
+  const idx = all.findIndex((m) => m.slug === slug);
+  const next = all.length > 1 ? all[(idx + 1) % all.length] : null;
+
   const pageUrl = `${SITE_URL}/${locale}/casos/${slug}`;
 
   return (
@@ -74,11 +79,11 @@ export default async function CasePage({
         {doc.meta.title}
       </h1>
 
-      <div className="mt-8 [&>p]:mt-5 [&>p]:text-[17px] [&>p]:leading-[1.7] [&>p]:text-muted">
+      <div className="mt-10 [&>h2]:mt-12 [&>h2]:font-display [&>h2]:text-xl [&>h2]:font-medium [&>h2]:text-foreground [&>p]:mt-5 [&>p]:text-[17px] [&>p]:leading-[1.7] [&>p]:text-muted [&>ul]:mt-4 [&>ul]:list-disc [&>ul]:space-y-1.5 [&>ul]:pl-5 [&>ul>li]:text-[17px] [&>ul>li]:leading-[1.7] [&>ul>li]:text-muted [&_strong]:font-medium [&_strong]:text-foreground">
         <MDXRemote source={doc.body} />
       </div>
 
-      <div className="mt-10 flex flex-wrap gap-1.5">
+      <div className="mt-12 flex flex-wrap gap-1.5">
         {tags.map((tg) => (
           <Tag key={tg}>{tg}</Tag>
         ))}
@@ -86,6 +91,28 @@ export default async function CasePage({
       <p className="mt-6 font-mono text-[11px] uppercase tracking-[0.08em] text-subtle">
         {doc.meta.status}
       </p>
+
+      <nav className="mt-16 flex flex-col gap-3 border-hairline border-x-0 border-b-0 pt-8 sm:flex-row sm:items-center sm:justify-between">
+        <Link
+          href="/casos"
+          className="font-mono text-[11px] uppercase tracking-[0.08em] text-subtle hover:text-foreground"
+        >
+          ← {locale === "es" ? "Todos los casos" : "All cases"}
+        </Link>
+        {next ? (
+          <Link
+            href={`/casos/${next.slug}`}
+            className="group text-sm text-muted transition-colors hover:text-foreground"
+          >
+            <span className="font-mono text-[11px] uppercase tracking-[0.08em] text-subtle">
+              {locale === "es" ? "Siguiente caso" : "Next case"} →
+            </span>
+            <span className="mt-1 block font-display text-base font-medium text-foreground">
+              {next.title}
+            </span>
+          </Link>
+        ) : null}
+      </nav>
     </article>
   );
 }

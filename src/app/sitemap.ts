@@ -8,6 +8,7 @@ import { SITE_URL } from "../lib/metadata";
 const STATIC_PATHS = [
   "",
   "enfoque",
+  "modelo",
   "casos",
   "insights",
   "equipo",
