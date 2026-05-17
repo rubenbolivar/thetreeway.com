@@ -26,7 +26,7 @@ export function Nav() {
       >
         <Link
           href="/"
-          className="font-display text-lg font-medium tracking-[-0.01em] text-foreground"
+          className="inline-flex min-h-[32px] items-center font-display text-lg font-medium tracking-[-0.01em] text-foreground"
         >
           {t("brand")}
         </Link>
@@ -38,7 +38,7 @@ export function Nav() {
               <li key={item.key}>
                 <Link
                   href={item.href}
-                  className="text-sm text-muted transition-colors hover:text-foreground"
+                  className="inline-flex min-h-[24px] items-center text-sm text-muted transition-colors hover:text-foreground"
                 >
                   {t(item.key)}
                 </Link>
@@ -52,7 +52,7 @@ export function Nav() {
         {/* Mobile toggle */}
         <button
           type="button"
-          className="text-sm text-foreground md:hidden"
+          className="-mr-2 inline-flex min-h-[44px] min-w-[44px] items-center justify-end text-sm text-foreground md:hidden"
           aria-expanded={open}
           aria-controls="mobile-menu"
           onClick={() => setOpen((v) => !v)}

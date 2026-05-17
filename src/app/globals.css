@@ -10,7 +10,9 @@
   --background: #ffffff;
   --foreground: #171717; /* text primary */
   --muted: #525252; /* text secondary */
-  --subtle: #a3a3a3; /* text tertiary */
+  --subtle: #6e6e6e; /* text tertiary — §3 was #a3a3a3 but that fails
+                        WCAG AA on 11px eyebrows; raised to pass AA
+                        while keeping the hierarchy (muted < subtle). */
   --border: #e5e5e5; /* always rendered at 0.5px */
   --accent: #1f4d3a; /* botanical green — links & secondary CTA only */
 }
@@ -20,7 +22,7 @@
     --background: #0a0a0a;
     --foreground: #f5f5f4;
     --muted: #a3a3a3;
-    --subtle: #737373;
+    --subtle: #8c8c8c; /* §3 was #737373; raised for WCAG AA on dark */
     --border: #262626;
     --accent: #1f4d3a;
   }

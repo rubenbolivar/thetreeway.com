@@ -92,7 +92,10 @@ export function ModelDiagram() {
                 role="button"
                 tabIndex={0}
                 aria-pressed={isActive}
-                aria-label={`${t(`layer${layer}Name`)} — ${t(`layer${layer}Desc`)}`}
+                // Accessible name = visible band name (WCAG 2.5.3 Label
+                // in Name). The description is announced via the
+                // aria-live detail panel on activation.
+                aria-label={t(`layer${layer}Name`)}
                 onClick={() =>
                   setActive((cur) => (cur === layer ? null : layer))
                 }
@@ -119,16 +122,6 @@ export function ModelDiagram() {
                   }}
                 >
                   {t(`layer${layer}Name`)}
-                </text>
-                <text
-                  x={SVG_W - 20}
-                  y={y + BAND_H / 2 + 1}
-                  textAnchor="end"
-                  dominantBaseline="middle"
-                  className="fill-subtle"
-                  style={{ font: "500 11px var(--font-mono)" }}
-                >
-                  {String(layer).padStart(2, "0")}
                 </text>
               </g>
             );

@@ -21,7 +21,7 @@ export function LocaleSwitcher() {
             locale={locale}
             aria-current={locale === active ? "true" : undefined}
             className={cn(
-              "uppercase transition-colors",
+              "inline-flex min-h-[24px] min-w-[24px] items-center justify-center uppercase transition-colors",
               locale === active
                 ? "text-foreground"
                 : "text-subtle hover:text-foreground",

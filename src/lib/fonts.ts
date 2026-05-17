@@ -3,7 +3,7 @@ import { Source_Serif_4, Inter, JetBrains_Mono } from "next/font/google";
 // Display: hero, H1/H2, case titles
 export const fontDisplay = Source_Serif_4({
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
+  weight: ["400", "500"], // 400 = italic pull-quote, 500 = headings
   variable: "--font-display",
   display: "swap",
 });

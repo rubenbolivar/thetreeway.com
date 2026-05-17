@@ -15,8 +15,10 @@ export const contactSchema = z.object({
   role: z.string().min(2).max(120),
   stage: z.enum(STAGES),
   message: z.string().min(10).max(4000),
-  // Honeypot: must stay empty (bots fill it).
-  website: z.string().max(0).optional().or(z.literal("")),
+  // Honeypot: accepted by the schema (so parsing succeeds) but the
+  // route silently 200s without sending when it's filled — a hard
+  // schema reject would tip off bots with a 400.
+  website: z.string().optional(),
 });
 
 export type ContactInput = z.infer<typeof contactSchema>;
