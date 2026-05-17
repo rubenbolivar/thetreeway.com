@@ -3,6 +3,14 @@
     "skipToContent": "Saltar al contenido",
     "localeLabel": "Idioma"
   },
+  "share": {
+    "label": "Compartir",
+    "copy": "Copiar enlace",
+    "copied": "Copiado"
+  },
+  "footer_social": {
+    "title": "Redes"
+  },
   "nav": {
     "brand": "TheTreeWay",
     "approach": "Enfoque",

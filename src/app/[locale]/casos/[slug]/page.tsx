@@ -9,6 +9,7 @@ import { Link } from "../../../../i18n/navigation";
 import { JsonLd } from "../../../../components/seo/json-ld";
 import { articleSchema } from "../../../../lib/schema";
 import { SITE_URL, buildMetadata } from "../../../../lib/metadata";
+import { ShareLinks } from "../../../../components/share/share-links";
 
 export function generateStaticParams() {
   return getStaticPairs("cases", [...routing.locales]);
@@ -91,6 +92,8 @@ export default async function CasePage({
       <p className="mt-6 font-mono text-[11px] uppercase tracking-[0.08em] text-subtle">
         {doc.meta.status}
       </p>
+
+      <ShareLinks url={pageUrl} title={doc.meta.title} />
 
       <nav className="mt-16 flex flex-col gap-3 border-hairline border-x-0 border-b-0 pt-8 sm:flex-row sm:items-center sm:justify-between">
         <Link

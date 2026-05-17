@@ -8,6 +8,7 @@ import { Link } from "../../../../i18n/navigation";
 import { JsonLd } from "../../../../components/seo/json-ld";
 import { articleSchema } from "../../../../lib/schema";
 import { SITE_URL, buildMetadata } from "../../../../lib/metadata";
+import { ShareLinks } from "../../../../components/share/share-links";
 
 // No articles yet (Sprint 4 decision). Infra is ready: when MDX files
 // land in src/content/insights/{locale}/, pages are generated here.
@@ -74,6 +75,8 @@ export default async function InsightPage({
       <div className="mt-8 [&>p]:mt-5 [&>p]:text-[17px] [&>p]:leading-[1.7] [&>p]:text-muted [&>h2]:mt-10 [&>h2]:font-display [&>h2]:text-2xl [&>h2]:font-medium [&>h2]:text-foreground">
         <MDXRemote source={doc.body} />
       </div>
+
+      <ShareLinks url={pageUrl} title={doc.meta.title} />
     </article>
   );
 }

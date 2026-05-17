@@ -3,6 +3,14 @@
     "skipToContent": "Skip to content",
     "localeLabel": "Language"
   },
+  "share": {
+    "label": "Share",
+    "copy": "Copy link",
+    "copied": "Copied"
+  },
+  "footer_social": {
+    "title": "Social"
+  },
   "nav": {
     "brand": "TheTreeWay",
     "approach": "Approach",

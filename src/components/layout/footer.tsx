@@ -1,5 +1,6 @@
 import { getTranslations } from "next-intl/server";
 import { Link } from "../../i18n/navigation";
+import { socialList } from "../../content/config/social";
 
 const NAV_ITEMS = [
   { key: "approach", href: "/enfoque" },
@@ -19,6 +20,7 @@ const LEGAL_ITEMS = [
 export async function Footer() {
   const tf = await getTranslations("footer");
   const tn = await getTranslations("nav");
+  const ts = await getTranslations("footer_social");
 
   return (
     <footer className="border-hairline border-x-0 border-b-0 mt-24">
@@ -37,6 +39,24 @@ export async function Footer() {
           >
             {tf("email")}
           </a>
+
+          <p className="mt-8 font-sans text-[11px] font-medium uppercase tracking-[0.08em] text-subtle">
+            {ts("title")}
+          </p>
+          <ul className="mt-3 flex flex-wrap gap-x-5 gap-y-2">
+            {socialList.map((s) => (
+              <li key={s.key}>
+                <a
+                  href={s.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-mono text-xs text-muted transition-colors hover:text-foreground"
+                >
+                  {s.label}
+                </a>
+              </li>
+            ))}
+          </ul>
         </div>
 
         <nav aria-label="Footer">
