@@ -1,7 +1,9 @@
 import { Tag } from "../ui/tag";
+import { Link } from "../../i18n/navigation";
 
 // Editorial 3-column row (REFACTOR §5): 140px label · 1fr content · 160px meta.
-// Stacks on mobile. Hairline divider between rows.
+// Stacks on mobile. Hairline divider between rows. Optional href makes
+// the title a locale-aware link (used in the /casos index).
 export function CaseRow({
   index,
   label,
@@ -9,6 +11,7 @@ export function CaseRow({
   body,
   stack,
   status,
+  href,
 }: {
   index: string;
   label: string;
@@ -16,6 +19,7 @@ export function CaseRow({
   body: string;
   stack: string;
   status: string;
+  href?: string;
 }) {
   const tags = stack.split(",").map((s) => s.trim());
 
@@ -30,7 +34,16 @@ export function CaseRow({
 
       <div>
         <h3 className="font-display text-[1.375rem] leading-snug font-medium text-foreground sm:text-2xl">
-          {title}
+          {href ? (
+            <Link
+              href={href}
+              className="transition-colors hover:text-accent"
+            >
+              {title}
+            </Link>
+          ) : (
+            title
+          )}
         </h3>
         <p className="mt-3 max-w-2xl text-[15px] leading-[1.65] text-muted">
           {body}
