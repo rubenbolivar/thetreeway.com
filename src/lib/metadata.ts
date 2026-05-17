@@ -22,6 +22,7 @@ export function buildMetadata({
   description,
   ogImage,
   type = "website",
+  rss,
 }: {
   locale: string;
   path?: string;
@@ -29,6 +30,9 @@ export function buildMetadata({
   description: string;
   ogImage?: string;
   type?: "website" | "article" | "profile";
+  // Absolute URL of an RSS feed to advertise via <link rel="alternate">
+  // (feed-reader / SEO autodiscovery).
+  rss?: string;
 }): Metadata {
   const url = abs(locale, path);
   const languages: Record<string, string> = {};
@@ -43,7 +47,11 @@ export function buildMetadata({
     metadataBase: new URL(SITE_URL),
     title,
     description,
-    alternates: { canonical: url, languages },
+    alternates: {
+      canonical: url,
+      languages,
+      ...(rss ? { types: { "application/rss+xml": rss } } : {}),
+    },
     openGraph: {
       title,
       description,

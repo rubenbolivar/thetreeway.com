@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { setRequestLocale, getTranslations } from "next-intl/server";
 import { routing } from "../../../i18n/routing";
-import { buildMetadata } from "../../../lib/metadata";
+import { SITE_URL, buildMetadata } from "../../../lib/metadata";
 import { getAll } from "../../../lib/content";
 import { SectionHeading } from "../../../components/ui/section-heading";
 import { Link } from "../../../i18n/navigation";
@@ -22,6 +22,7 @@ export async function generateMetadata({
     path: "insights",
     title: `${t("title")} · TheTreeWay`,
     description: t("subtitle"),
+    rss: `${SITE_URL}/${locale}/insights/rss.xml`,
   });
 }
 
@@ -38,6 +39,13 @@ export default async function InsightsIndex({
   return (
     <section className="mx-auto max-w-5xl px-6 py-20 sm:py-28">
       <SectionHeading title={t("title")} subtitle={t("subtitle")} as="h1" />
+
+      <a
+        href={`/${locale}/insights/rss.xml`}
+        className="mt-6 inline-block font-mono text-[11px] uppercase tracking-[0.08em] text-subtle hover:text-foreground"
+      >
+        RSS
+      </a>
 
       {articles.length === 0 ? (
         <div className="mt-12 border-hairline px-6 py-16">
