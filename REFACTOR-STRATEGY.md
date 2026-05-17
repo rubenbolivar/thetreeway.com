@@ -7,7 +7,7 @@
 
 ## Estado de sprints (actualizar al cerrar cada uno)
 
-- [ ] Sprint 0 — Auditoría y setup (EN CURSO)
+- [x] Sprint 0 — Auditoría y setup (CERRADO 2026-05-17, commit 4ace8cd)
 - [ ] Sprint 1 — Cimientos visibles
 - [ ] Sprint 2 — Secciones que cierran ventas (filter + model-diagram + casos)
 - [ ] Sprint 3 — Profundidad (how-we-work, author, tech-stack, insights-preview)

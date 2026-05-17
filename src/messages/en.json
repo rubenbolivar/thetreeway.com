@@ -1,6 +1,44 @@
 {
   "common": {
-    "scaffold": "Refactor 2026 · Sprint 0 · base",
-    "locale": "Active locale"
+    "skipToContent": "Skip to content",
+    "localeLabel": "Language"
+  },
+  "nav": {
+    "brand": "TheTreeWay",
+    "approach": "Approach",
+    "cases": "Cases",
+    "insights": "Insights",
+    "team": "Team",
+    "contact": "Contact",
+    "menu": "Menu",
+    "close": "Close"
+  },
+  "hero": {
+    "eyebrow": "Boutique firm · Caracas · New York",
+    "title": "Digital architecture for organizations that don't fit a template.",
+    "subtitle": "We design and operate the digital transformation of enterprise groups across Latin America and emerging markets: from unified CRM to data lake, from e-commerce to agentic copilots. One architecture, one roadmap, one accountable team.",
+    "ctaPrimary": "Request a diagnostic",
+    "ctaSecondary": "See how we work"
+  },
+  "credentials": {
+    "workWithLabel": "We work with",
+    "workWith": "Multi-vertical enterprise groups",
+    "sectorsLabel": "Sectors",
+    "sectors": "Automotive, agribusiness, energy, retail, services",
+    "marketsLabel": "Markets",
+    "markets": "Venezuela, LatAm, NYC cross-border",
+    "trackLabel": "Track record",
+    "track": "Over a decade in complex markets"
+  },
+  "footer": {
+    "tagline": "Boutique firm for digital architecture and applied AI.",
+    "location": "We operate from Caracas, Venezuela and New York.",
+    "navTitle": "Navigation",
+    "legalTitle": "Legal",
+    "privacy": "Privacy",
+    "terms": "Terms",
+    "attributions": "Attributions",
+    "email": "hola@thetreeway.com",
+    "rights": "© 2026 TheTreeWay. Made with care in LatAm."
   }
 }
