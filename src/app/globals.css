@@ -61,11 +61,19 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-/* Hairline borders: 0.5px always (REFACTOR-STRATEGY §3) */
-.border-hairline {
-  border-width: 0.5px;
-  border-style: solid;
-  border-color: var(--border);
+/* Hairline borders: 0.5px (REFACTOR-STRATEGY §3). Must live in the
+   `base` layer: an unlayered rule outbeats Tailwind's utilities, which
+   would make `border-x-0 / border-b-0 / border-t-0` no-ops and render
+   every divider as a full box (text then sits flush against the side
+   borders). In `base`, the utilities win and can zero individual
+   sides, so a lone `.border-hairline` is still a full 0.5px box while
+   `.border-hairline.border-x-0.border-b-0` is the intended top rule. */
+@layer base {
+  .border-hairline {
+    border-width: 0.5px;
+    border-style: solid;
+    border-color: var(--border);
+  }
 }
 
 ::selection {
