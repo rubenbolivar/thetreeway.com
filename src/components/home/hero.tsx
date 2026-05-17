@@ -4,9 +4,10 @@ import { Button, buttonVariants } from "../ui/button";
 import { Label } from "../ui/label";
 import { cn } from "../../lib/utils";
 
+import { calUrl } from "../../content/config/social";
+
 // CTA primary → Cal.com (external; embed comes in Sprint 5).
 // CTA secondary → /enfoque (locale-aware; page lands in Sprint 4).
-const CAL_URL = "https://cal.com/ruben-bolivar";
 
 export async function Hero() {
   const t = await getTranslations("hero");
@@ -24,7 +25,7 @@ export async function Hero() {
       </p>
 
       <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
-        <Button href={CAL_URL} external variant="primary">
+        <Button href={calUrl} external variant="primary">
           {t("ctaPrimary")}
         </Button>
         <Link

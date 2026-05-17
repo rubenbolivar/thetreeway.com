@@ -11,7 +11,7 @@ import { cn } from "../../lib/utils";
 // navigation. Detail panel is HTML below the SVG (better a11y/responsive
 // than text inside SVG — rationale in REFACTOR-STRATEGY.md §8).
 
-const CAL_URL = "https://cal.com/ruben-bolivar";
+import { calUrl } from "../../content/config/social";
 
 // Tenue, desaturated tints (work in light & dark via low alpha).
 const TINTS: Record<number, string> = {
@@ -166,7 +166,7 @@ export function ModelDiagram() {
                   {t("ctaArticle")}
                 </Link>
                 <a
-                  href={CAL_URL}
+                  href={calUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-accent hover:underline underline-offset-4"

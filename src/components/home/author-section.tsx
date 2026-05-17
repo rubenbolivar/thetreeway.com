@@ -1,11 +1,10 @@
 import { getTranslations } from "next-intl/server";
 import { Link } from "../../i18n/navigation";
 import { SectionHeading } from "../ui/section-heading";
+import { social, calUrl } from "../../content/config/social";
 
 // "La firma tiene un autor." 220px photo (placeholder) · 1fr content.
-// Closing pull-quote in serif italic. LinkedIn from extracted assets.
-const LINKEDIN = "https://www.linkedin.com/in/rubenbolivar/";
-const CAL_URL = "https://cal.com/ruben-bolivar";
+// Closing pull-quote in serif italic. Links from central social config.
 
 export async function AuthorSection() {
   const t = await getTranslations("author");
@@ -45,7 +44,7 @@ export async function AuthorSection() {
 
             <div className="mt-7 flex flex-wrap gap-x-6 gap-y-2 text-sm">
               <a
-                href={LINKEDIN}
+                href={social.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-accent hover:underline underline-offset-4"
@@ -59,7 +58,7 @@ export async function AuthorSection() {
                 {t("writes")}
               </Link>
               <a
-                href={CAL_URL}
+                href={calUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-accent hover:underline underline-offset-4"
