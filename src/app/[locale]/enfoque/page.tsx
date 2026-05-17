@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { setRequestLocale, getTranslations } from "next-intl/server";
 import { routing } from "../../../i18n/routing";
+import { buildMetadata } from "../../../lib/metadata";
 import { FilterSection } from "../../../components/home/filter-section";
 import { ModelDiagram } from "../../../components/home/model-diagram";
 import { HowWeWork } from "../../../components/home/how-we-work";
@@ -16,7 +17,12 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "model" });
-  return { title: `${t("title")} · TheTreeWay`, description: t("subtitle") };
+  return buildMetadata({
+    locale,
+    path: "enfoque",
+    title: `${t("title")} · TheTreeWay`,
+    description: t("subtitle"),
+  });
 }
 
 // /enfoque — expanded model: for whom + six-layer model + how we work.

@@ -1,4 +1,6 @@
-import { setRequestLocale } from "next-intl/server";
+import type { Metadata } from "next";
+import { setRequestLocale, getTranslations } from "next-intl/server";
+import { buildMetadata } from "../../lib/metadata";
 import { Hero } from "../../components/home/hero";
 import { CredentialsBar } from "../../components/home/credentials-bar";
 import { FilterSection } from "../../components/home/filter-section";
@@ -8,6 +10,21 @@ import { HowWeWork } from "../../components/home/how-we-work";
 import { AuthorSection } from "../../components/home/author-section";
 import { TechStack } from "../../components/home/tech-stack";
 import { InsightsPreview } from "../../components/home/insights-preview";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "hero" });
+  return buildMetadata({
+    locale,
+    path: "",
+    title: "TheTreeWay — arquitectura digital para grupos empresariales",
+    description: t("subtitle"),
+  });
+}
 
 export default async function HomePage({
   params,

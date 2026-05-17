@@ -137,5 +137,28 @@
     "subtitle": "Notas sobre arquitectura digital, IA aplicada y transformación en mercados complejos.",
     "empty": "Los primeros artículos están en preparación.",
     "viewAll": "Ver todos los insights"
+  },
+  "contact": {
+    "title": "Dos caminos para empezar.",
+    "card1Title": "Solicitar diagnóstico",
+    "card1Body": "Una conversación de 45 minutos con Rubén para entender su contexto y evaluar si TheTreeWay es la firma adecuada para su organización. Sin costo, sin compromiso.",
+    "card1Cta": "Agendar",
+    "card2Title": "Consulta puntual",
+    "card2Body": "¿Tiene una pregunta específica sobre arquitectura, IA aplicada o transformación digital? Escríbanos.",
+    "fName": "Nombre",
+    "fEmail": "Email corporativo",
+    "fOrg": "Organización",
+    "fRole": "Rol",
+    "fStage": "Etapa de su organización",
+    "stageDiagnosing": "Diagnosticando",
+    "stageImplementing": "En implementación",
+    "stageSecondOpinion": "Buscando segunda opinión",
+    "stageOther": "Otro",
+    "fMessage": "Mensaje",
+    "submit": "Enviar",
+    "sending": "Enviando…",
+    "success": "Gracias. Le responderemos en breve.",
+    "error": "No se pudo enviar. Inténtelo de nuevo o escriba a hola@thetreeway.com.",
+    "invalid": "Revise los campos marcados."
   }
 }

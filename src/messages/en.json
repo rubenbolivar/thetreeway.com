@@ -137,5 +137,28 @@
     "subtitle": "Notes on digital architecture, applied AI and transformation in complex markets.",
     "empty": "The first articles are in preparation.",
     "viewAll": "View all insights"
+  },
+  "contact": {
+    "title": "Two ways to start.",
+    "card1Title": "Request a diagnostic",
+    "card1Body": "A 45-minute conversation with Rubén to understand your context and assess whether TheTreeWay is the right firm for your organization. No cost, no commitment.",
+    "card1Cta": "Book",
+    "card2Title": "Specific question",
+    "card2Body": "Have a specific question about architecture, applied AI or digital transformation? Write to us.",
+    "fName": "Name",
+    "fEmail": "Work email",
+    "fOrg": "Organization",
+    "fRole": "Role",
+    "fStage": "Stage of your organization",
+    "stageDiagnosing": "Diagnosing",
+    "stageImplementing": "Implementing",
+    "stageSecondOpinion": "Seeking a second opinion",
+    "stageOther": "Other",
+    "fMessage": "Message",
+    "submit": "Send",
+    "sending": "Sending…",
+    "success": "Thank you. We'll reply shortly.",
+    "error": "Could not send. Try again or write to hola@thetreeway.com.",
+    "invalid": "Please review the highlighted fields."
   }
 }

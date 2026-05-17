@@ -8,6 +8,8 @@ const nextConfig: NextConfig = {
   // Node server deploy (PM2 + nginx proxy), not static export.
   // Enables API routes, dynamic OG, SSR. See REFACTOR-STRATEGY.md.
   output: "standalone",
+  // Let middleware.ts own the legacy trailing-slash 301 (REFACTOR §7.8).
+  skipTrailingSlashRedirect: true,
   eslint: {
     ignoreDuringBuilds: true,
   },

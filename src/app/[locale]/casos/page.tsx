@@ -1,11 +1,28 @@
+import type { Metadata } from "next";
 import { setRequestLocale, getTranslations } from "next-intl/server";
 import { routing } from "../../../i18n/routing";
+import { buildMetadata } from "../../../lib/metadata";
 import { getAll } from "../../../lib/content";
 import { SectionHeading } from "../../../components/ui/section-heading";
 import { CaseRow } from "../../../components/cases/case-row";
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "cases" });
+  return buildMetadata({
+    locale,
+    path: "casos",
+    title: `${t("title")} · TheTreeWay`,
+    description: t("subtitle"),
+  });
 }
 
 export default async function CasesIndex({

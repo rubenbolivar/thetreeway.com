@@ -6,6 +6,9 @@ import { routing } from "../../../../i18n/routing";
 import { getDoc, getStaticPairs } from "../../../../lib/content";
 import { Tag } from "../../../../components/ui/tag";
 import { Link } from "../../../../i18n/navigation";
+import { JsonLd } from "../../../../components/seo/json-ld";
+import { articleSchema } from "../../../../lib/schema";
+import { SITE_URL, buildMetadata } from "../../../../lib/metadata";
 
 export function generateStaticParams() {
   return getStaticPairs("cases", [...routing.locales]);
@@ -19,11 +22,13 @@ export async function generateMetadata({
   const { locale, slug } = await params;
   const doc = getDoc("cases", locale, slug);
   if (!doc) return {};
-  // Full canonical/alternates/OG systematised in Sprint 5.
-  return {
+  return buildMetadata({
+    locale,
+    path: `casos/${slug}`,
     title: `${doc.meta.title} · TheTreeWay`,
-    description: doc.meta.summary,
-  };
+    description: doc.meta.summary ?? doc.meta.title,
+    type: "article",
+  });
 }
 
 export default async function CasePage({
@@ -41,8 +46,20 @@ export default async function CasePage({
     .map((s) => s.trim())
     .filter(Boolean);
 
+  const pageUrl = `${SITE_URL}/${locale}/casos/${slug}`;
+
   return (
     <article className="mx-auto max-w-3xl px-6 py-20 sm:py-28">
+      <JsonLd
+        data={articleSchema({
+          headline: doc.meta.title,
+          description: doc.meta.summary,
+          url: pageUrl,
+          image: `${pageUrl}/opengraph-image`,
+          datePublished: doc.meta.date,
+          section: "Case Study",
+        })}
+      />
       <Link
         href="/casos"
         className="font-mono text-[11px] uppercase tracking-[0.08em] text-subtle hover:text-foreground"
