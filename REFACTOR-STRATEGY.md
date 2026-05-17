@@ -10,7 +10,7 @@
 - [x] Sprint 0 — Auditoría y setup (CERRADO 2026-05-17, commit 4ace8cd)
 - [x] Sprint 1 — Cimientos visibles (CERRADO 2026-05-17, commit 43fc7b8)
 - [x] Sprint 2 — Secciones que cierran ventas (CERRADO 2026-05-17, commit ce14af5)
-- [ ] Sprint 3 — Profundidad (how-we-work, author, tech-stack, insights-preview)
+- [x] Sprint 3 — Profundidad (CERRADO 2026-05-17, commit ed837ad)
 - [ ] Sprint 4 — Páginas internas (MDX, casos, insights, enfoque, equipo)
 - [ ] Sprint 5 — Conversión y SEO (contacto, API, OG, sitemap, JSON-LD, middleware)
 - [ ] Sprint 6 — Calidad final (Lighthouse, a11y, schema, hreflang)
