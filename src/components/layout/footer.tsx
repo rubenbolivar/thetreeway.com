@@ -1,6 +1,7 @@
 import { getTranslations } from "next-intl/server";
 import { Link } from "../../i18n/navigation";
 import { socialList } from "../../content/config/social";
+import { BrandLogo } from "./brand-logo";
 
 const NAV_ITEMS = [
   { key: "approach", href: "/enfoque" },
@@ -26,9 +27,11 @@ export async function Footer() {
     <footer className="border-hairline border-x-0 border-b-0 mt-24">
       <div className="mx-auto grid max-w-5xl gap-10 px-6 py-14 sm:grid-cols-2 lg:grid-cols-4">
         <div className="lg:col-span-2">
-          <p className="font-display text-lg font-medium text-foreground">
-            {tn("brand")}
-          </p>
+          <BrandLogo
+            variant="lockup"
+            label={tn("brand")}
+            className="h-7 text-foreground"
+          />
           <p className="mt-3 max-w-sm text-sm leading-relaxed text-muted">
             {tf("tagline")}
           </p>

@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { Link } from "../../i18n/navigation";
 import { LocaleSwitcher } from "./locale-switcher";
+import { BrandLogo } from "./brand-logo";
 import { cn } from "../../lib/utils";
 
 const ITEMS = [
@@ -27,9 +28,10 @@ export function Nav() {
       >
         <Link
           href="/"
-          className="inline-flex min-h-[32px] items-center font-display text-lg font-medium tracking-[-0.01em] text-foreground"
+          aria-label={t("brand")}
+          className="inline-flex min-h-[32px] items-center text-foreground"
         >
-          {t("brand")}
+          <BrandLogo variant="lockup" className="h-6 sm:h-7" />
         </Link>
 
         {/* Desktop */}
