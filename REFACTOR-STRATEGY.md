@@ -13,7 +13,7 @@
 - [x] Sprint 3 — Profundidad (CERRADO 2026-05-17, commit ed837ad)
 - [x] Sprint 4 — Páginas internas (CERRADO 2026-05-17, commit dd290d7)
 - [x] Sprint 5 — Conversión y SEO (CERRADO 2026-05-17, commit 7642c1c)
-- [ ] Sprint 6 — Calidad final (Lighthouse, a11y, schema, hreflang)
+- [x] Sprint 6 — Calidad final (CERRADO 2026-05-17, commit 5407faf)
 
 ---
 
