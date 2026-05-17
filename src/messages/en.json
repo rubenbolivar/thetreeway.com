@@ -90,5 +90,52 @@
     "case3Body": "A used cooking-oil collection operation in New York with hundreds of clients across restaurant chains needed to reconcile billing against the client's enterprise system without direct database access. We designed the reconciliation middleware, collections automation and the cross-border operating architecture.",
     "case3Stack": "Python, REST APIs, n8n, Claude · parsing",
     "case3Status": "In operation · Since 2025"
+  },
+  "howWeWork": {
+    "title": "From diagnostic to operation, without skipping steps.",
+    "phase1Name": "Diagnostic",
+    "phase1Time": "2-4 weeks",
+    "phase1Body": "Immersion in the business. Interviews with executive leadership and vertical leads. Map of the current ecosystem. Deliverable: diagnostic document and architecture proposal.",
+    "phase2Name": "Architecture",
+    "phase2Time": "4-6 weeks",
+    "phase2Body": "Detailed design of the six layers. Phased implementation plan, budget, schedule, vendor matrix. Deliverable: target architecture and an executable roadmap.",
+    "phase3Name": "Implementation",
+    "phase3Time": "3-12 months per layer",
+    "phase3Body": "Layer-by-layer construction. Each deliverable is a layer running in production with a team trained to operate it. Support through a biweekly executive committee.",
+    "phase4Name": "Operation and evolution",
+    "phase4Time": "Ongoing",
+    "phase4Body": "Agentic layer, iterative improvements, new digital products."
+  },
+  "author": {
+    "title": "The firm has an author.",
+    "name": "Rubén Bolívar",
+    "role": "Founder and principal architect",
+    "bio1": "Over a decade designing digital products and data ecosystems for organizations operating in Latin American markets. I work at the intersection of enterprise architecture, fintech and applied AI, focused on traditional enterprise groups rewriting how they operate.",
+    "bio2": "Before TheTreeWay I built a vehicle-credit fintech platform in Venezuela and collaborated on cross-border operations between New York and LatAm. Today I lead TheTreeWay and write about digital transformation in emerging markets.",
+    "linkedin": "LinkedIn",
+    "writes": "What I write",
+    "contactDirect": "Contact directly",
+    "quote": "The digital transformation of an enterprise group is not bought. It is designed, operated and learned. My job is to accompany that process with a coherent architecture and no shortcuts.",
+    "photoAlt": "Rubén Bolívar, founder of TheTreeWay"
+  },
+  "techStack": {
+    "title": "What we build on.",
+    "cat1": "Cloud and infrastructure",
+    "cat1Items": "AWS, Azure, Google Cloud",
+    "cat2": "Data and BI",
+    "cat2Items": "Power BI, Tableau, Snowflake, dbt",
+    "cat3": "Application",
+    "cat3Items": "Next.js, React Native, Python, Node.js",
+    "cat4": "Platforms",
+    "cat4Items": "Odoo, Salesforce, HubSpot, n8n",
+    "cat5": "Applied AI",
+    "cat5Items": "Claude, OpenAI, LangChain, vector stores",
+    "close": "The choice of stack depends on the problem, not on the trend."
+  },
+  "insightsPreview": {
+    "title": "What we write.",
+    "subtitle": "Notes on digital architecture, applied AI and transformation in complex markets.",
+    "empty": "The first articles are in preparation.",
+    "viewAll": "View all insights"
   }
 }

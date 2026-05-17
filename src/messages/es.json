@@ -90,5 +90,52 @@
     "case3Body": "Una operación de recolección de aceite usado de cocina en Nueva York con cientos de clientes en cadenas de restaurantes necesitaba reconciliar facturación contra el sistema enterprise del cliente sin acceso directo a la base de datos. Diseñamos el middleware de reconciliación, automatización de cobranza y la arquitectura operativa cross-border.",
     "case3Stack": "Python, APIs REST, n8n, Claude · parsing",
     "case3Status": "En operación · Desde 2025"
+  },
+  "howWeWork": {
+    "title": "De diagnóstico a operación, sin saltar pasos.",
+    "phase1Name": "Diagnóstico",
+    "phase1Time": "2-4 semanas",
+    "phase1Body": "Inmersión en el negocio. Entrevistas con dirección general y líderes de vertical. Mapa del ecosistema actual. Entregable: documento de diagnóstico y propuesta de arquitectura.",
+    "phase2Name": "Arquitectura",
+    "phase2Time": "4-6 semanas",
+    "phase2Body": "Diseño detallado de las seis capas. Plan de implementación por etapas, presupuesto, calendario, matriz de proveedores. Entregable: arquitectura objetivo y hoja de ruta ejecutable.",
+    "phase3Name": "Implementación",
+    "phase3Time": "3-12 meses por capa",
+    "phase3Body": "Construcción capa por capa. Cada entregable es una capa funcionando en producción con equipo capacitado para operarla. Acompañamiento en comité ejecutivo quincenal.",
+    "phase4Name": "Operación y evolución",
+    "phase4Time": "Continuo",
+    "phase4Body": "Capa agéntica, mejoras iterativas, nuevos productos digitales."
+  },
+  "author": {
+    "title": "La firma tiene un autor.",
+    "name": "Rubén Bolívar",
+    "role": "Fundador y arquitecto principal",
+    "bio1": "Más de una década diseñando productos digitales y ecosistemas de datos para organizaciones operando en mercados latinoamericanos. Trabajo en la intersección de arquitectura empresarial, fintech e IA aplicada, con foco en grupos empresariales tradicionales que están reescribiendo su forma de operar.",
+    "bio2": "Antes de TheTreeWay construí una plataforma fintech de crédito vehicular en Venezuela y colaboré con operaciones cross-border entre Nueva York y LatAm. Hoy dirijo TheTreeWay y escribo sobre transformación digital en mercados emergentes.",
+    "linkedin": "LinkedIn",
+    "writes": "Lo que escribo",
+    "contactDirect": "Contactar directamente",
+    "quote": "La transformación digital de un grupo empresarial no se compra. Se diseña, se opera y se aprende. Mi trabajo es acompañar ese proceso con una arquitectura coherente y sin atajos.",
+    "photoAlt": "Rubén Bolívar, fundador de TheTreeWay"
+  },
+  "techStack": {
+    "title": "Sobre qué construimos.",
+    "cat1": "Cloud e infraestructura",
+    "cat1Items": "AWS, Azure, Google Cloud",
+    "cat2": "Datos y BI",
+    "cat2Items": "Power BI, Tableau, Snowflake, dbt",
+    "cat3": "Aplicación",
+    "cat3Items": "Next.js, React Native, Python, Node.js",
+    "cat4": "Plataformas",
+    "cat4Items": "Odoo, Salesforce, HubSpot, n8n",
+    "cat5": "IA aplicada",
+    "cat5Items": "Claude, OpenAI, LangChain, vector stores",
+    "close": "La elección del stack depende del problema, no de la moda."
+  },
+  "insightsPreview": {
+    "title": "Lo que escribimos.",
+    "subtitle": "Notas sobre arquitectura digital, IA aplicada y transformación en mercados complejos.",
+    "empty": "Los primeros artículos están en preparación.",
+    "viewAll": "Ver todos los insights"
   }
 }

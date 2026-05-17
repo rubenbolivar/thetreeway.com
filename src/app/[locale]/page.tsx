@@ -4,6 +4,10 @@ import { CredentialsBar } from "../../components/home/credentials-bar";
 import { FilterSection } from "../../components/home/filter-section";
 import { ModelDiagram } from "../../components/home/model-diagram";
 import { CasesList } from "../../components/home/cases-list";
+import { HowWeWork } from "../../components/home/how-we-work";
+import { AuthorSection } from "../../components/home/author-section";
+import { TechStack } from "../../components/home/tech-stack";
+import { InsightsPreview } from "../../components/home/insights-preview";
 
 export default async function HomePage({
   params,
@@ -20,7 +24,11 @@ export default async function HomePage({
       <FilterSection />
       <ModelDiagram />
       <CasesList />
-      {/* Sprint 3: how-we-work + author + tech-stack + insights-preview */}
+      <HowWeWork />
+      <AuthorSection />
+      <TechStack />
+      <InsightsPreview />
+      {/* Sprint 4: internal pages (MDX cases/insights, enfoque, equipo) */}
     </>
   );
 }
