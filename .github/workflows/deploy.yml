@@ -2,113 +2,129 @@ name: Deploy to VPS
 
 on:
   push:
-    branches: [ main, master ]
+    branches: [main, master]
   pull_request:
-    branches: [ main, master ]
+    branches: [main, master]
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-    - name: Setup Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: '18'
-        cache: 'npm'
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "18" # parity with the VPS runtime (pm2/node 18)
+          cache: "npm"
 
-    - name: Install dependencies
-      run: npm ci
+      - name: Install dependencies
+        run: npm ci
 
-    - name: Build project
-      run: |
-        NODE_ENV=production npm run build
-      env:
-        CI: true
+      - name: Build (Next standalone)
+        run: NODE_ENV=production npm run build
+        env:
+          CI: true
+          # NEXT_PUBLIC_* are inlined at build time (canonical, sitemap).
+          NEXT_PUBLIC_SITE_URL: ${{ secrets.NEXT_PUBLIC_SITE_URL }}
+          NEXT_PUBLIC_PLAUSIBLE_DOMAIN: ${{ secrets.NEXT_PUBLIC_PLAUSIBLE_DOMAIN }}
 
-    - name: Run tests (if available)
-      run: |
-        if [ -f "package.json" ] && grep -q "\"test\":" package.json; then
-          npm test -- --passWithNoTests
-        else
-          echo "No tests found, skipping..."
-        fi
+      - name: Assemble standalone runtime
+        # output:'standalone' does NOT bundle static/public — they must
+        # sit next to server.js or /_next/static 400s (Sprint 6 finding).
+        run: |
+          cp -r .next/static .next/standalone/.next/static
+          cp -r public .next/standalone/public
+          tar -czf thetreeway-${{ github.sha }}.tar.gz -C .next/standalone .
 
-    - name: Create deployment package
-      run: |
-        tar -czf thetreeway-website-${{ github.sha }}.tar.gz -C out .
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: thetreeway-${{ github.sha }}
+          path: thetreeway-${{ github.sha }}.tar.gz
+          retention-days: 30
 
-    - name: Upload build artifacts
-      uses: actions/upload-artifact@v4
-      with:
-        name: website-build-${{ github.sha }}
-        path: thetreeway-website-${{ github.sha }}.tar.gz
-        retention-days: 30
+      - name: Copy bundle to VPS
+        if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master')
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USERNAME }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          port: ${{ secrets.VPS_PORT }}
+          source: "thetreeway-${{ github.sha }}.tar.gz"
+          target: "/tmp/"
 
-    - name: Copy tarball to VPS via SCP
-      if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master')
-      uses: appleboy/scp-action@v0.1.7
-      with:
-        host: ${{ secrets.VPS_HOST }}
-        username: ${{ secrets.VPS_USERNAME }}
-        key: ${{ secrets.VPS_SSH_KEY }}
-        port: ${{ secrets.VPS_PORT }}
-        source: "thetreeway-website-${{ github.sha }}.tar.gz"
-        target: "/tmp/"
+      - name: Atomic deploy + PM2 reload
+        if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master')
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USERNAME }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          port: ${{ secrets.VPS_PORT }}
+          envs: SHA,RESEND_API_KEY,RESEND_FROM,RESEND_TO,CAL_COM_USERNAME,CAL_COM_EVENT,NEXT_PUBLIC_SITE_URL,NEXT_PUBLIC_PLAUSIBLE_DOMAIN
+          script: |
+            set -e
+            SHA="${{ github.sha }}"
+            TARBALL="/tmp/thetreeway-${SHA}.tar.gz"
+            APP="/opt/thetreeway"
+            NEW="/opt/thetreeway.new"
+            OLD="/opt/thetreeway.old"
+            PORT=3003
 
-    - name: Atomic deploy on VPS
-      if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master')
-      uses: appleboy/ssh-action@v1.0.3
-      with:
-        host: ${{ secrets.VPS_HOST }}
-        username: ${{ secrets.VPS_USERNAME }}
-        key: ${{ secrets.VPS_SSH_KEY }}
-        port: ${{ secrets.VPS_PORT }}
-        script: |
-          set -e
-          SHA="${{ github.sha }}"
-          TARBALL="/tmp/thetreeway-website-${SHA}.tar.gz"
-          WEB="/var/www/thetreeway.com"
-          NEW="/var/www/thetreeway.com.new"
-          OLD="/var/www/thetreeway.com.old"
+            rm -rf "$NEW" "$OLD"
+            mkdir -p "$NEW"
+            tar -xzf "$TARBALL" -C "$NEW"
 
-          # Cleanup leftovers from previous failed attempts
-          rm -rf "$NEW" "$OLD"
+            # Runtime env (NOT committed; written from Actions secrets).
+            cat > "$NEW/.env" <<ENVEOF
+            NODE_ENV=production
+            PORT=$PORT
+            HOSTNAME=127.0.0.1
+            RESEND_API_KEY=${{ secrets.RESEND_API_KEY }}
+            RESEND_FROM=${{ secrets.RESEND_FROM }}
+            RESEND_TO=${{ secrets.RESEND_TO }}
+            CAL_COM_USERNAME=${{ secrets.CAL_COM_USERNAME }}
+            CAL_COM_EVENT=${{ secrets.CAL_COM_EVENT }}
+            NEXT_PUBLIC_SITE_URL=${{ secrets.NEXT_PUBLIC_SITE_URL }}
+            NEXT_PUBLIC_PLAUSIBLE_DOMAIN=${{ secrets.NEXT_PUBLIC_PLAUSIBLE_DOMAIN }}
+            ENVEOF
+            chmod 600 "$NEW/.env"
 
-          # Extract to new dir
-          mkdir -p "$NEW"
-          tar -xzf "$TARBALL" -C "$NEW"
-          chown -R www-data:www-data "$NEW"
+            # Atomic swap
+            [ -d "$APP" ] && mv "$APP" "$OLD"
+            mv "$NEW" "$APP"
 
-          # Atomic swap
-          mv "$WEB" "$OLD"
-          mv "$NEW" "$WEB"
+            # PM2: start or reload the standalone server (node server.js)
+            cd "$APP"
+            if pm2 describe thetreeway > /dev/null 2>&1; then
+              pm2 reload thetreeway --update-env
+            else
+              pm2 start server.js --name thetreeway --cwd "$APP"
+            fi
+            pm2 save
 
-          # Smoke test against the live HTTPS endpoint via localhost
-          if curl -k -sf -o /dev/null --max-time 10 \
-               --resolve thetreeway.com:443:127.0.0.1 \
-               https://thetreeway.com/ \
-             && curl -k -sf -o /dev/null --max-time 10 \
-                  --resolve thetreeway.com:443:127.0.0.1 \
-                  https://thetreeway.com/rubenbolivar/; then
-            echo "Smoke test OK — keeping new deploy"
-            rm -rf "$OLD"
-            rm -f "$TARBALL"
-          else
-            echo "Smoke test FAILED — rolling back"
-            rm -rf "$WEB"
-            mv "$OLD" "$WEB"
-            rm -f "$TARBALL"
-            exit 1
-          fi
+            # Smoke test the Node app directly on its port
+            sleep 4
+            if curl -sf -o /dev/null --max-time 10 "http://127.0.0.1:$PORT/es" \
+               && curl -sf -o /dev/null --max-time 10 "http://127.0.0.1:$PORT/rubenbolivar"; then
+              echo "Smoke OK — keeping $SHA"
+              rm -rf "$OLD"; rm -f "$TARBALL"
+            else
+              echo "Smoke FAILED — rolling back"
+              pm2 stop thetreeway || true
+              rm -rf "$APP"
+              [ -d "$OLD" ] && mv "$OLD" "$APP"
+              cd "$APP" 2>/dev/null && pm2 reload thetreeway --update-env || true
+              rm -f "$TARBALL"
+              exit 1
+            fi
 
-          echo "Deploy of $SHA completed successfully"
-
-    - name: Lighthouse CI
-      if: github.event_name == 'pull_request'
-      uses: treosh/lighthouse-ci-action@v10
-      with:
-        temporaryPublicStorage: true
+      - name: Lighthouse CI
+        if: github.event_name == 'pull_request'
+        uses: treosh/lighthouse-ci-action@v10
+        with:
+          temporaryPublicStorage: true
