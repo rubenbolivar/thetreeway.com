@@ -39,9 +39,14 @@ export function buildMetadata({
   for (const l of routing.locales) languages[l] = abs(l, path);
   languages["x-default"] = abs(routing.defaultLocale, path);
 
-  const images = ogImage
-    ? [{ url: ogImage, width: 1200, height: 630, alt: title }]
-    : undefined;
+  // Only set `images` when an explicit OG image is given. Setting it to
+  // `undefined` still counts as "authored" and suppresses Next's
+  // file-convention opengraph-image.tsx — omitting the key lets the
+  // dynamic brand OG be injected automatically (Next gotcha).
+  const ogImages = ogImage
+    ? { images: [{ url: ogImage, width: 1200, height: 630, alt: title }] }
+    : {};
+  const twImages = ogImage ? { images: [ogImage] } : {};
 
   return {
     metadataBase: new URL(SITE_URL),
@@ -59,13 +64,13 @@ export function buildMetadata({
       siteName: SITE_NAME,
       locale: locale === "es" ? "es_ES" : "en_US",
       type,
-      images,
+      ...ogImages,
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
-      images: ogImage ? [ogImage] : undefined,
+      ...twImages,
     },
   };
 }
