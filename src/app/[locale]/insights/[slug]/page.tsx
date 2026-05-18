@@ -72,7 +72,7 @@ export default async function InsightPage({
           {doc.meta.date}
         </p>
       ) : null}
-      <div className="mt-8 [&>p]:mt-5 [&>p]:text-[17px] [&>p]:leading-[1.7] [&>p]:text-muted [&>h2]:mt-10 [&>h2]:font-display [&>h2]:text-2xl [&>h2]:font-medium [&>h2]:text-foreground">
+      <div className="mt-8 [&>p]:mt-5 [&>p]:text-[17px] [&>p]:leading-[1.7] [&>p]:text-muted [&>h2]:mt-10 [&>h2]:font-display [&>h2]:text-2xl [&>h2]:font-medium [&>h2]:text-foreground [&>ul]:mt-4 [&>ul]:list-disc [&>ul]:space-y-1.5 [&>ul]:pl-5 [&>ul>li]:text-[17px] [&>ul>li]:leading-[1.7] [&>ul>li]:text-muted [&_strong]:font-medium [&_strong]:text-foreground [&_a]:text-accent [&_a]:underline [&_a]:underline-offset-4">
         <MDXRemote source={doc.body} />
       </div>
 

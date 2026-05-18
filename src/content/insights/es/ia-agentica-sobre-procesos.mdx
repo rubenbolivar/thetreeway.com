@@ -5,7 +5,9 @@ date: "2026-04-28"
 order: 2
 ---
 
-Hay dos formas de poner IA en una empresa. Una se demuestra en quince minutos y nunca entra en producción. La otra es invisible en una demo y sostiene una operación todos los días. La sexta capa del modelo es deliberadamente la segunda.
+En TheTreeWay diseñamos la arquitectura digital de una organización como un modelo de **seis capas**, de la base a la cima: **(1) captura de datos**, **(2) CRM con golden record**, **(3) contact center y comercial digital**, **(4) data lake corporativo**, **(5) business intelligence** y **(6) capa agéntica**. El orden no es decorativo: cada capa se apoya en las de abajo. La capa agéntica —la IA que opera procesos del negocio— es deliberadamente la última, no la primera. Si quiere el mapa completo, está en [el modelo](/es/modelo).
+
+Con ese mapa a la vista, la tesis de este artículo es simple. Hay dos formas de poner IA en una empresa: una se demuestra en quince minutos y nunca entra en producción; la otra es invisible en una demo y sostiene una operación todos los días. La sexta capa apuesta, a propósito, por la segunda.
 
 ## La trampa de la demo
 
@@ -18,7 +20,7 @@ La demo optimiza para el aplauso. La operación optimiza para el lunes por la ma
 Una capa agéntica seria no es un chat encima de los datos. Es un conjunto de agentes acotados a procesos concretos del negocio, con tres condiciones:
 
 - **Alcance estrecho.** Un agente que hace una cosa bien, no uno que promete todo.
-- **Sobre una base consolidada.** Opera sobre el golden record y el data lake, no sobre silos. La capa seis sin las capas dos y cuatro es teatro.
+- **Sobre una base consolidada.** Opera sobre el *golden record* (capa 2) y el *data lake corporativo* (capa 4), no sobre silos. La capa agéntica sin esas dos capas debajo es teatro: una IA segura de datos que se contradicen.
 - **Con traza.** Cada acción del agente deja registro auditable. Si no se puede revisar lo que hizo, no está en producción: está en un experimento.
 
 ## El criterio antes que el modelo
