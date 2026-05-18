@@ -28,9 +28,9 @@ export async function Footer() {
       <div className="mx-auto grid max-w-5xl gap-10 px-6 py-14 sm:grid-cols-2 lg:grid-cols-4">
         <div className="lg:col-span-2">
           <BrandLogo
-            variant="lockup"
+            variant="wordmark"
             label={tn("brand")}
-            className="h-7 text-foreground"
+            className="h-10 text-foreground"
           />
           <p className="mt-3 max-w-sm text-sm leading-relaxed text-muted">
             {tf("tagline")}

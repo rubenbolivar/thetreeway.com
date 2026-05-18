@@ -4,16 +4,18 @@
 // Source assets are the white-on-transparent PNGs in /public.
 
 const ASSET = {
+  // Wordmark only (no symbol) — used in nav/footer at a larger size.
+  wordmark: { src: "/brand-wordmark.png", ratio: 1405 / 300 },
   lockup: { src: "/brand-lockup.png", ratio: 1373 / 320 },
   mark: { src: "/brand-mark.png", ratio: 1 },
 } as const;
 
 export function BrandLogo({
-  variant = "lockup",
+  variant = "wordmark",
   className,
   label,
 }: {
-  variant?: "lockup" | "mark";
+  variant?: "wordmark" | "lockup" | "mark";
   className?: string;
   // When set, the logo is exposed to AT as an image with this name.
   // Omit when a parent element already provides the accessible name.

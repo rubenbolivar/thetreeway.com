@@ -31,7 +31,7 @@ export function Nav() {
           aria-label={t("brand")}
           className="inline-flex min-h-[32px] items-center text-foreground"
         >
-          <BrandLogo variant="lockup" className="h-6 sm:h-7" />
+          <BrandLogo variant="wordmark" className="h-8 sm:h-10" />
         </Link>
 
         {/* Desktop */}
