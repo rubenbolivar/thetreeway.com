@@ -65,7 +65,7 @@ jobs:
           username: ${{ secrets.VPS_USERNAME }}
           key: ${{ secrets.VPS_SSH_KEY }}
           port: ${{ secrets.VPS_PORT }}
-          envs: SHA,RESEND_API_KEY,RESEND_FROM,RESEND_TO,CAL_COM_USERNAME,CAL_COM_EVENT,NEXT_PUBLIC_SITE_URL,NEXT_PUBLIC_PLAUSIBLE_DOMAIN
+          envs: SHA,CAL_COM_USERNAME,CAL_COM_EVENT,NEXT_PUBLIC_SITE_URL,NEXT_PUBLIC_PLAUSIBLE_DOMAIN
           script: |
             set -e
             SHA="${{ github.sha }}"
@@ -94,9 +94,6 @@ jobs:
             PORT=$PORT
             HOSTNAME=::
             NODE_OPTIONS=--dns-result-order=ipv4first
-            RESEND_API_KEY=${{ secrets.RESEND_API_KEY }}
-            RESEND_FROM=${{ secrets.RESEND_FROM }}
-            RESEND_TO=${{ secrets.RESEND_TO }}
             CAL_COM_USERNAME=${{ secrets.CAL_COM_USERNAME }}
             CAL_COM_EVENT=${{ secrets.CAL_COM_EVENT }}
             NEXT_PUBLIC_SITE_URL=${{ secrets.NEXT_PUBLIC_SITE_URL }}
@@ -110,8 +107,8 @@ jobs:
 
             # Load .env into THIS shell so the PM2 child (and
             # `pm2 reload --update-env`) inherit it. We can't `source`
-            # it: values like RESEND_FROM='TheTreeWay <a@b>' contain
-            # shell metachars. Split on the first '=', export literally.
+            # it: some values may contain shell metachars (spaces, <>,
+            # etc.). Split on the first '=', export literally.
             set -a
             while IFS='=' read -r k v; do
               case "$k" in ''|\#*) continue;; esac
