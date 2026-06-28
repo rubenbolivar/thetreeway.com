@@ -17,7 +17,7 @@ export function organizationSchema(): WithContext<Organization> {
     url: SITE_URL,
     logo: `${SITE_URL}/images/tree-logo.png`,
     description:
-      "Firma boutique de arquitectura digital e IA aplicada para grupos empresariales en Latinoamérica.",
+      "Firma boutique de arquitectura de datos e IA aplicada para empresas y negocios en Latinoamérica.",
     areaServed: ["Latin America", "Venezuela", "United States"],
     sameAs: SAME_AS,
     founder: { "@type": "Person", name: "Rubén Bolívar" },
