@@ -48,7 +48,7 @@
     "privacy": "Privacidad",
     "terms": "Términos",
     "attributions": "Atribuciones",
-    "email": "hola@thetreeway.com",
+    "email": "ruben@thetreeway.com",
     "rights": "© 2026 TheTreeWay. Hecho con cuidado en LatAm."
   },
   "filter": {
@@ -155,6 +155,7 @@
     "card1Cta": "Agendar",
     "card2Title": "Consulta puntual",
     "card2Body": "¿Tiene una pregunta específica sobre arquitectura, IA aplicada o transformación digital? Escríbanos.",
+    "directEmailLabel": "O escríbeme directamente",
     "fName": "Nombre",
     "fEmail": "Email corporativo",
     "fOrg": "Organización",

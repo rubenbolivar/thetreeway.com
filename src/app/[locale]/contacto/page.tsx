@@ -5,6 +5,7 @@ import { buildMetadata } from "../../../lib/metadata";
 import { SectionHeading } from "../../../components/ui/section-heading";
 import { CalEmbed } from "../../../components/contact/cal-embed";
 import { ContactForm } from "../../../components/contact/contact-form";
+import { social } from "../../../content/config/social";
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -52,7 +53,7 @@ export default async function ContactPage({
           </div>
         </div>
 
-        {/* Path 2 — specific question (form → Resend) */}
+        {/* Path 2 — specific question (form → WhatsApp) */}
         <div>
           <h2 className="font-display text-xl font-medium text-foreground">
             {t("card2Title")}
@@ -65,6 +66,17 @@ export default async function ContactPage({
           </div>
         </div>
       </div>
+
+      {/* Email directo del autor — vía discreta debajo del grid principal. */}
+      <p className="mt-16 border-hairline border-x-0 border-b-0 pt-8 text-sm text-muted">
+        {t("directEmailLabel")}{" "}
+        <a
+          href={`mailto:${social.email}`}
+          className="font-mono text-xs text-accent hover:underline underline-offset-4"
+        >
+          {social.email}
+        </a>
+      </p>
     </section>
   );
 }

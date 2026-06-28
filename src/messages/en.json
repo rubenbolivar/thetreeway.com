@@ -48,7 +48,7 @@
     "privacy": "Privacy",
     "terms": "Terms",
     "attributions": "Attributions",
-    "email": "hola@thetreeway.com",
+    "email": "ruben@thetreeway.com",
     "rights": "© 2026 TheTreeWay. Made with care in LatAm."
   },
   "filter": {
@@ -155,6 +155,7 @@
     "card1Cta": "Book",
     "card2Title": "Specific question",
     "card2Body": "Have a specific question about architecture, applied AI or digital transformation? Write to us.",
+    "directEmailLabel": "Or email me directly",
     "fName": "Name",
     "fEmail": "Work email",
     "fOrg": "Organization",

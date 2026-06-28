@@ -11,7 +11,7 @@ import Image from 'next/image';
 const PHONE = '+584121010744';
 const PHONE_DISPLAY = '+58 412-101-0744';
 const WHATSAPP_URL = 'https://wa.me/584121010744';
-const EMAIL = 'hola@thetreeway.com';
+const EMAIL = 'ruben@thetreeway.com';
 
 const SOCIALS = [
   { label: 'LinkedIn', href: 'https://www.linkedin.com/in/rubenbolivar/' },
