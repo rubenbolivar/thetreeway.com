@@ -3,6 +3,7 @@ import { setRequestLocale, getTranslations } from "next-intl/server";
 import { routing } from "../../../i18n/routing";
 import { SITE_URL, buildMetadata } from "../../../lib/metadata";
 import { getAll } from "../../../lib/content";
+import { formatDate } from "../../../lib/utils";
 import { SectionHeading } from "../../../components/ui/section-heading";
 import { Link } from "../../../i18n/navigation";
 
@@ -60,7 +61,7 @@ export default async function InsightsIndex({
             >
               <p className="font-mono text-[11px] uppercase tracking-[0.08em] text-subtle">
                 {`0${i + 1}`}
-                {a.date ? ` · ${a.date}` : ""}
+                {a.date ? ` · ${formatDate(a.date, locale)}` : ""}
               </p>
               <h2 className="mt-2 font-display text-xl font-medium text-foreground">
                 <Link

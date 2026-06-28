@@ -82,23 +82,27 @@
     "layer6Name": "Agentic layer",
     "layer6Desc": "Vertical copilots on top of the stack. AI applied to real business processes."
   },
+  "enfoque": {
+    "title": "Who we work for and how.",
+    "subtitle": "Our client filter, the six-layer model and the path from diagnostics to operations."
+  },
   "cases": {
     "title": "What we've built.",
     "subtitle": "Three real operations in complex markets. No inflated metrics. Just what happened.",
     "case1Label": "Multi-brand enterprise group · Venezuela",
     "case1Title": "Unified digital architecture for five operating verticals.",
     "case1Body": "A conglomerate with divisions in automotive, motorcycles, agricultural machinery, solar energy and construction equipment operated with five siloed data ecosystems and twelve different software vendors. We designed and implemented the six-layer model, starting with the customer golden record and the biweekly operating executive committee.",
-    "case1Stack": "AWS, Power BI, Odoo, n8n, Agentic layer · Claude",
+    "case1Stack": "PostgreSQL, Next.js, FastAPI, n8n, BI, Agentic layer · Claude",
     "case1Status": "In operation · Since 2025",
     "case2Label": "Consumer-credit fintech platform · Emerging market",
     "case2Title": "An owned digital product in a market with fragile infrastructure.",
     "case2Body": "We designed and built a credit platform for vehicle financing in a market with banking-infrastructure limitations, high informality and complex currency dynamics. Integration with a partner bank, alternative scoring, dealership panel and a complete mobile experience.",
-    "case2Stack": "Next.js, Python, PostgreSQL, Bank integration",
+    "case2Stack": "Django, DRF, PostgreSQL, JWT, Nginx · Gunicorn",
     "case2Status": "Owned product · Active",
     "case3Label": "Cross-border sustainable-services operation · NYC ↔ LatAm",
     "case3Title": "Reconciliation middleware between two operating realities.",
     "case3Body": "A used cooking-oil collection operation in New York with hundreds of clients across restaurant chains needed to reconcile billing against the client's enterprise system without direct database access. We designed the reconciliation middleware, collections automation and the cross-border operating architecture.",
-    "case3Stack": "Python, REST APIs, n8n, Claude · parsing",
+    "case3Stack": "Node.js, PostgreSQL, Google Places API, n8n, Claude · parsing",
     "case3Status": "In operation · Since 2025"
   },
   "howWeWork": {
@@ -155,7 +159,7 @@
     "card1Cta": "Book",
     "card2Title": "Specific question",
     "card2Body": "Have a specific question about architecture, applied AI or digital transformation? Write to us.",
-    "directEmailLabel": "Or email me directly",
+    "directEmailLabel": "Or email Rubén directly:",
     "fName": "Name",
     "fEmail": "Work email",
     "fOrg": "Organization",

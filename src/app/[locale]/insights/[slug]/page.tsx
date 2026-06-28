@@ -9,6 +9,7 @@ import { JsonLd } from "../../../../components/seo/json-ld";
 import { articleSchema } from "../../../../lib/schema";
 import { SITE_URL, buildMetadata } from "../../../../lib/metadata";
 import { ShareLinks } from "../../../../components/share/share-links";
+import { formatDate } from "../../../../lib/utils";
 
 // No articles yet (Sprint 4 decision). Infra is ready: when MDX files
 // land in src/content/insights/{locale}/, pages are generated here.
@@ -69,7 +70,7 @@ export default async function InsightPage({
       </h1>
       {doc.meta.date ? (
         <p className="mt-3 font-mono text-[11px] uppercase tracking-[0.08em] text-subtle">
-          {doc.meta.date}
+          {formatDate(doc.meta.date, locale)}
         </p>
       ) : null}
       <div className="mt-8 [&>p]:mt-5 [&>p]:text-[17px] [&>p]:leading-[1.7] [&>p]:text-muted [&>h2]:mt-10 [&>h2]:font-display [&>h2]:text-2xl [&>h2]:font-medium [&>h2]:text-foreground [&>ul]:mt-4 [&>ul]:list-disc [&>ul]:space-y-1.5 [&>ul]:pl-5 [&>ul>li]:text-[17px] [&>ul>li]:leading-[1.7] [&>ul>li]:text-muted [&_strong]:font-medium [&_strong]:text-foreground [&_a]:text-accent [&_a]:underline [&_a]:underline-offset-4">

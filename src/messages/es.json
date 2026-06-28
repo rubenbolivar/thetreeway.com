@@ -82,23 +82,27 @@
     "layer6Name": "Capa agéntica",
     "layer6Desc": "Copilotos verticales sobre el stack. IA aplicada a procesos reales del negocio."
   },
+  "enfoque": {
+    "title": "Para quién trabajamos y cómo.",
+    "subtitle": "Nuestro filtro de clientes, el modelo de seis capas y el proceso desde el diagnóstico hasta la operación."
+  },
   "cases": {
     "title": "Lo que hemos construido.",
     "subtitle": "Tres operaciones reales en mercados complejos. Sin métricas infladas. Solo lo que pasó.",
     "case1Label": "Grupo empresarial multimarca · Venezuela",
     "case1Title": "Arquitectura digital unificada para cinco verticales operativas.",
     "case1Body": "Un conglomerado con divisiones en automoción, motocicletas, maquinaria agrícola, energía solar y equipos de construcción operaba con cinco ecosistemas de datos en silos y doce proveedores de software distintos. Diseñamos e implementamos el modelo de seis capas, empezando por el golden record del cliente y el comité ejecutivo operativo quincenal.",
-    "case1Stack": "AWS, Power BI, Odoo, n8n, Capa agéntica · Claude",
+    "case1Stack": "PostgreSQL, Next.js, FastAPI, n8n, BI, Capa agéntica · Claude",
     "case1Status": "En operación · Desde 2025",
     "case2Label": "Plataforma fintech de crédito al consumo · Mercado emergente",
     "case2Title": "Producto digital propio en un mercado de infraestructura frágil.",
     "case2Body": "Diseñamos y construimos una plataforma de crédito para financiamiento de vehículos en un mercado con limitaciones de infraestructura bancaria, alta informalidad y dinámicas cambiarias complejas. Integración con banco aliado, scoring alternativo, panel de concesionarios y experiencia móvil completa.",
-    "case2Stack": "Next.js, Python, PostgreSQL, Integración bancaria",
+    "case2Stack": "Django, DRF, PostgreSQL, JWT, Nginx · Gunicorn",
     "case2Status": "Producto propio · Activo",
     "case3Label": "Operación cross-border servicios sostenibles · NYC ↔ LatAm",
     "case3Title": "Middleware de reconciliación entre dos realidades operativas.",
     "case3Body": "Una operación de recolección de aceite usado de cocina en Nueva York con cientos de clientes en cadenas de restaurantes necesitaba reconciliar facturación contra el sistema enterprise del cliente sin acceso directo a la base de datos. Diseñamos el middleware de reconciliación, automatización de cobranza y la arquitectura operativa cross-border.",
-    "case3Stack": "Python, APIs REST, n8n, Claude · parsing",
+    "case3Stack": "Node.js, PostgreSQL, Google Places API, n8n, Claude · parsing",
     "case3Status": "En operación · Desde 2025"
   },
   "howWeWork": {
@@ -155,7 +159,7 @@
     "card1Cta": "Agendar",
     "card2Title": "Consulta puntual",
     "card2Body": "¿Tiene una pregunta específica sobre arquitectura, IA aplicada o transformación digital? Escríbanos.",
-    "directEmailLabel": "O escríbeme directamente",
+    "directEmailLabel": "O escriba directamente a Rubén:",
     "fName": "Nombre",
     "fEmail": "Email corporativo",
     "fOrg": "Organización",
