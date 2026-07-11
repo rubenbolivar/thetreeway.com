@@ -73,7 +73,7 @@ export default async function InsightPage({
           {formatDate(doc.meta.date, locale)}
         </p>
       ) : null}
-      <div className="mt-8 [&>p]:mt-5 [&>p]:text-[17px] [&>p]:leading-[1.7] [&>p]:text-muted [&>h2]:mt-10 [&>h2]:font-display [&>h2]:text-2xl [&>h2]:font-medium [&>h2]:text-foreground [&>ul]:mt-4 [&>ul]:list-disc [&>ul]:space-y-1.5 [&>ul]:pl-5 [&>ul>li]:text-[17px] [&>ul>li]:leading-[1.7] [&>ul>li]:text-muted [&_strong]:font-medium [&_strong]:text-foreground [&_a]:text-accent [&_a]:underline [&_a]:underline-offset-4">
+      <div className="mt-8 [&>p]:mt-5 [&>p]:text-[17px] [&>p]:leading-[1.7] [&>p]:text-muted [&>h2]:mt-10 [&>h2]:font-display [&>h2]:text-2xl [&>h2]:font-medium [&>h2]:text-foreground [&>h3]:mt-8 [&>h3]:font-display [&>h3]:text-xl [&>h3]:font-medium [&>h3]:text-foreground [&>ul]:mt-4 [&>ul]:list-disc [&>ul]:space-y-1.5 [&>ul]:pl-5 [&>ul>li]:text-[17px] [&>ul>li]:leading-[1.7] [&>ul>li]:text-muted [&>ol]:mt-4 [&>ol]:list-decimal [&>ol]:space-y-1.5 [&>ol]:pl-5 [&>ol>li]:text-[17px] [&>ol>li]:leading-[1.7] [&>ol>li]:text-muted [&_strong]:font-medium [&_strong]:text-foreground [&_a]:text-accent [&_a]:underline [&_a]:underline-offset-4 [&_code]:font-mono [&_code]:text-[13px] [&_code]:bg-border/40 [&_code]:px-1.5 [&_code]:py-0.5 [&_code]:rounded [&>pre]:mt-6 [&>pre]:overflow-x-auto [&>pre]:border-hairline [&>pre]:bg-border/25 [&>pre]:p-4 [&>pre]:text-[13px] [&>pre]:leading-[1.6] [&>pre_code]:bg-transparent [&>pre_code]:p-0 [&>pre_code]:text-[13px] [&>blockquote]:mt-6 [&>blockquote]:border-l-2 [&>blockquote]:border-accent [&>blockquote]:pl-4 [&>blockquote]:italic [&>blockquote>p]:text-muted">
         <MDXRemote source={doc.body} />
       </div>
 
