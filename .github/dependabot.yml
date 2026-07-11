@@ -1,0 +1,27 @@
+# Dependabot: alerta y propone PRs ante dependencias vulnerables/desactualizadas.
+# Añadido tras el incidente CVE-2025-55182 (Next.js RCE) — jul 2026.
+version: 2
+updates:
+  # Dependencias npm de la app (Next.js, React, etc.)
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    open-pull-requests-limit: 10
+    labels:
+      - "dependencies"
+    groups:
+      # Agrupa minor+patch en un solo PR para reducir ruido
+      minor-and-patch:
+        update-types:
+          - "minor"
+          - "patch"
+    # Los updates de seguridad (CVEs) se abren siempre, aunque sean major
+  # Actions del workflow de deploy
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    labels:
+      - "ci"
